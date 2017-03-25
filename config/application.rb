@@ -17,7 +17,7 @@ end
 Bundler.require(*Rails.groups)
 
 # module
-module My100tales
+module Engrsm
   # class
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
