@@ -36,7 +36,7 @@
   if document.getElementById(VUE_MARKDOWN_ID) != null
 
     # tab for mobile
-    My100TalesUtilTab.createTab(
+    EngrsmUtilTab.createTab(
       SWITCH_MARKDOWN_EDITOR_DOM,
       SWITCH_MARKDOWN_PREVIEW_DOM,
       VUE_MARKDOWN_EDITOR_OUTER_DOM,
@@ -46,7 +46,7 @@
 
     # markdown preview
     engrsm_util_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
-    My100TalesUtilMarkdownPreview.previewMarkdown(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
+    EngrsmUtilMarkdownPreview.previewMarkdown(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
 
   # ---------------------------------------------------------------------
   # logic for tag
@@ -65,18 +65,18 @@
       break if document.getElementById(formSuggestOptionId) == null
 
       # value
-      option = My100TalesUtilXss.escapeString(document.getElementById(formSuggestOptionId).innerText).split(WHITE_SPACE)
+      option = EngrsmUtilXss.escapeString(document.getElementById(formSuggestOptionId).innerText).split(WHITE_SPACE)
       suggestion = { value: option[TAG_OPTIONS_NAME], countlist: option[TAG_OPTIONS_SIZE] }
       suggestList.push(suggestion)
 
     # set suggestion
-    bloodhound = My100TalesUtilTagsinput.setSuggestion(suggestList)
+    bloodhound = EngrsmUtilTagsinput.setSuggestion(suggestList)
     bloodhound.initialize
 
     # ready tag form
-    templates = { suggestion: (data) -> return My100TalesTemplateTaleForm.suggestion(data.value, data.countlist) }
-    tagClass = My100TalesTemplateTaleForm.tagClass()
+    templates = { suggestion: (data) -> return EngrsmTemplateTaleForm.suggestion(data.value, data.countlist) }
+    tagClass = EngrsmTemplateTaleForm.tagClass()
 
     # set tag form
-    My100TalesUtilTagsinput.setTagForm(FORM_INPUT_DOM, bloodhound, templates, tagClass)
-    My100TalesUtilTagsinput.setCustomEvent(FORM_INPUT_DOM)
+    EngrsmUtilTagsinput.setTagForm(FORM_INPUT_DOM, bloodhound, templates, tagClass)
+    EngrsmUtilTagsinput.setCustomEvent(FORM_INPUT_DOM)

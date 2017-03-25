@@ -1,5 +1,5 @@
 # util/tagsinput
-class @My100TalesUtilTagsinput
+class @EngrsmUtilTagsinput
 
   # const
   # keycode
@@ -11,7 +11,7 @@ class @My100TalesUtilTagsinput
   # private method: escape for XSS
   escapeTagsInput = (formInputDOM) ->
     for item in $(formInputDOM).tagsinput('items')
-      escaped = My100TalesUtilXss.escapeString(item)
+      escaped = EngrsmUtilXss.escapeString(item)
       if item != escaped
         $(formInputDOM).tagsinput('remove', item)
         $(formInputDOM).tagsinput('add', escaped)
@@ -76,7 +76,7 @@ class @My100TalesUtilTagsinput
       $(formInputDOM).tagsinput('remove', item) for item in targets
 
     $(formInputDOM).on('beforeItemAdd', (event) ->
-      event.item = My100TalesUtilXss.escapeString(event.item)
+      event.item = EngrsmUtilXss.escapeString(event.item)
       makeScoreUnique(event)
     )
 

@@ -11,4 +11,4 @@
 
     # disabled
     # agreement / submit
-    My100TalesUtilDisable.setDisabled(VUE_SIGNUP_AGREEMENT_DOM, VUE_SIGNUP_SUBMIT_DOM)
+    EngrsmUtilDisable.setDisabled(VUE_SIGNUP_AGREEMENT_DOM, VUE_SIGNUP_SUBMIT_DOM)

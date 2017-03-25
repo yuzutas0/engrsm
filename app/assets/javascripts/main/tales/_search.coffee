@@ -24,10 +24,10 @@
   if document.getElementById(VUE_SEARCH_ID) != null
 
     # modal
-    My100TalesUtilModal.createModal('#' + VUE_SEARCH_ID)
+    EngrsmUtilModal.createModal('#' + VUE_SEARCH_ID)
 
     # tab
-    My100TalesUtilTab.createTab(
+    EngrsmUtilTab.createTab(
       LEFT_TAB_SWITCH_DOM,
       RIGHT_TAB_SWITCH_DOM,
       LEFT_TAB_CONTENT_DOM,
@@ -37,7 +37,7 @@
 
     # disabled
     # save / name
-    My100TalesUtilDisable.setDisabled(VUE_SEARCH_CONDITION_SAVE_DOM, VUE_SEARCH_CONDITION_NAME_DOM)
+    EngrsmUtilDisable.setDisabled(VUE_SEARCH_CONDITION_SAVE_DOM, VUE_SEARCH_CONDITION_NAME_DOM)
     # score (key, compare, value)
     index = -1
     hashForSort = {}
@@ -46,7 +46,7 @@
       break if document.getElementById(VUE_SEARCH_CONDITION_SCORE_ID_PREFIX + index) == null
       dom = '#' + VUE_SEARCH_CONDITION_SCORE_ID_PREFIX + index
       hashForSort[$(dom).val()] = dom
-      My100TalesUtilDisable.setDisabled(
+      EngrsmUtilDisable.setDisabled(
         dom,
         VUE_SEARCH_CONDITION_COMPARE_DOM_PREFIX + index,
         VUE_SEARCH_CONDITION_VALUE_DOM_PREFIX + index
@@ -58,4 +58,4 @@
       break if document.getElementById(VUE_SEARCH_CONDITION_SORT_ID_PREFIX + index) == null
       dom = '#' + VUE_SEARCH_CONDITION_SORT_ID_PREFIX + index
       key = $(dom).val().split(':')[0]
-      My100TalesUtilDisable.setDisabled(hashForSort[key], dom)
+      EngrsmUtilDisable.setDisabled(hashForSort[key], dom)

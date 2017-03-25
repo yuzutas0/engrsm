@@ -1,5 +1,5 @@
 # util/tab
-class @My100TalesUtilTab
+class @EngrsmUtilTab
 
   # const
   ACTIVE_CLASS = 'active'

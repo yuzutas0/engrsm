@@ -1,5 +1,5 @@
 # util/disable
-class @My100TalesUtilDisable
+class @EngrsmUtilDisable
 
   setDisabledOne = (trigger, target) ->
     $(target).prop('disabled', !($(trigger).is(':checked')))

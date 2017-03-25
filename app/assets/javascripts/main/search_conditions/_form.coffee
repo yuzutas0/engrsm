@@ -15,4 +15,4 @@
       break
 
     # modal
-    My100TalesUtilModal.createModal(VUE_EDIT_DOM)
+    EngrsmUtilModal.createModal(VUE_EDIT_DOM)

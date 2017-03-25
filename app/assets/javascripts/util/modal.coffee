@@ -1,5 +1,5 @@
 # util/modal
-class @My100TalesUtilModal
+class @EngrsmUtilModal
 
   @createModal = (dom, actions...) ->
     Vue.config.devtools = false

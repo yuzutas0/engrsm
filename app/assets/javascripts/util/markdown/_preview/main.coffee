@@ -1,5 +1,5 @@
 # util/markdown/preview
-class @My100TalesUtilMarkdownPreview
+class @EngrsmUtilMarkdownPreview
 
   # const
   NEW_LINE_CHAR = '\n'

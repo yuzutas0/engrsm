@@ -1,5 +1,5 @@
 # template/tales/_form
-class @My100TalesTemplateTaleForm
+class @EngrsmTemplateTaleForm
 
   # <span class="tag module__label layout__tale__form__tag__item">
   #   tag1

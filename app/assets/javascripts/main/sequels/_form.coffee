@@ -22,7 +22,7 @@
     VUE_MARKDOWN_PREVIEW_OUTER_DOM = VUE_MARKDOWN_DOM + "__preview__tab__content"
     HIDDEN_CLASS = 'hidden'
     # render
-    My100TalesUtilTab.createTab(
+    EngrsmUtilTab.createTab(
       SWITCH_MARKDOWN_EDITOR_DOM,
       SWITCH_MARKDOWN_PREVIEW_DOM,
       VUE_MARKDOWN_EDITOR_OUTER_DOM,
@@ -36,7 +36,7 @@
     VUE_MARKDOWN_PREVIEW_DOM = VUE_MARKDOWN_DOM + '__preview'
     # render
     editor = engrsm_util_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
-    preview = My100TalesUtilMarkdownPreview.previewMarkdown(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
+    preview = EngrsmUtilMarkdownPreview.previewMarkdown(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
 
     # modal
-    My100TalesUtilModal.createModal(VUE_EDIT_DOM, editor, preview)
+    EngrsmUtilModal.createModal(VUE_EDIT_DOM, editor, preview)

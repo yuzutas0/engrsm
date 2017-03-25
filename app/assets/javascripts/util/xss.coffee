@@ -1,5 +1,5 @@
 # util/xss
-class @My100TalesUtilXss
+class @EngrsmUtilXss
 
   # same as: forms/tale_form#escape
   @escapeString = (string) ->

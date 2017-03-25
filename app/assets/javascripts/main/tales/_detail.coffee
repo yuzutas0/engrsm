@@ -21,4 +21,4 @@
 
   # check DOM
   if document.getElementById(DETAIL_ID) != null
-    My100TalesUtilTab.rewriteQuery(TAB_BUTTONS, TAB_QUERIES)
+    EngrsmUtilTab.rewriteQuery(TAB_BUTTONS, TAB_QUERIES)
