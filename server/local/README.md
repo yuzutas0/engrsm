@@ -31,6 +31,12 @@ $ bundle install --path vendor/bundle --without=production
 $ bundle exec rake bower:install
 ```
 
+## Assets initialization
+
+```
+$ bundle exec gemoji extract public/images/emoji
+```
+
 ## Database creation
 
 set up MariaDB
@@ -90,12 +96,6 @@ $ docker run -d -p 9200:9200 -p 9300:9300 --name ${container_name} ${image_name}
 
 ```
 $ DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake elasticsearch:create_index
-```
-
-## Assets initialization
-
-```
-$ bundle exec rake emoji
 ```
 
 ## How to run the test suite
