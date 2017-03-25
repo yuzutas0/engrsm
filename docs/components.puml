@@ -8,7 +8,7 @@ Preferences -> Plugins -> "PlantUML integration"
 '/
 @startuml
 
-title My 100 Tales Components by @yuzutas0
+title Engrsm Components by @yuzutas0
 
 package "Client" {
   [browser]
