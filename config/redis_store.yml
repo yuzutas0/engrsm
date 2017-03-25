@@ -3,13 +3,13 @@ default: &default
   port: 6379
   #  password: <%= ENV['REDIS_PASSWORD'] %>
   db: <%= ENV['REDIS_DB'] %>
-  namespace: session_my100tales
+  namespace: session_engrsm
   expire_after: 10.days
 
 development:
   <<: *default
   host: 127.0.0.1
-  namespace: session_my100tales_development
+  namespace: session_engrsm_development
 
 test:
   <<: *default

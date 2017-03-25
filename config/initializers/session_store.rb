@@ -3,7 +3,7 @@
 # manage session by rails cookie
 def use_default(message)
   Rails.logger.error(message)
-  Rails.application.config.session_store :cookie_store, key: '_my100tales_session'
+  Rails.application.config.session_store :cookie_store, key: '_engrsm_session'
 end
 
 # manage session by redis

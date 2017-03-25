@@ -5,15 +5,15 @@ Dotenv.load '.env'
 # config valid only for current version of Capistrano
 lock '~> 3.7.0'
 
-set :application, 'my100tales'
-set :repo_url, 'https://github.com/yuzutas0/my100tales.git'
+set :application, 'engrsm'
+set :repo_url, 'https://github.com/yuzutas0/engrsm.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
-set :deploy_to, '/var/www/my100tales'
+set :deploy_to, '/var/www/ensrsm'
 set :deploy_via, :remote_cache
 
 # Default value for :format is :airbrussh.

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-app_path = '/var/www/my100tales'
+app_path = '/var/www/engrsm'
 shared_path = "#{app_path}/shared"
 current_path = "#{app_path}/current"
 
