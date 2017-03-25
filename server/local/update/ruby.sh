@@ -8,4 +8,8 @@ rbenv install --list # => ${new_version}
 
 rbenv install ${new_version}
 rbenv global ${new_version}
-ruby -v
+ruby -v # => ${new_version}
+
+rbenv exec gem install bundler
+rbenv rehash
+rbenv exec bundler -v

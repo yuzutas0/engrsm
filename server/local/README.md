@@ -24,6 +24,7 @@ $ brew link --force libxslt
 ```
 # Gemfile
 $ bundle config build.nokogiri --use-system-libraries
+$ bundle config build.libv8 --with-system-v8
 $ bundle install --path vendor/bundle --without=production
 
 # Bower
@@ -56,7 +57,7 @@ mysql> GRANT ALL PRIVILEGES ON *.* TO '${username}'@'%' WITH GRANT OPTION;
 create scheme
 
 ```
-mysql> CREATE DATABASE my100tales DEFAULT CHARSET utf8mb4;
+mysql> CREATE DATABASE ${schema} DEFAULT CHARSET utf8mb4;
 ```
 
 create tables
