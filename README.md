@@ -19,12 +19,6 @@ fork from https://github.com/yuzutas0/my100tales
 - Elasticsearch
 - Postfix
 
-## Ruby version
-
-```
-2.3.0
-```
-
 ## Setup
 
 - [Local](server/local/)
