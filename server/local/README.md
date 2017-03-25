@@ -34,7 +34,7 @@ $ bundle exec rake bower:install
 ## Assets initialization
 
 ```
-$ bundle exec gemoji extract public/images/emoji
+$ bundle exec rake emoji
 ```
 
 ## Database creation
@@ -69,13 +69,13 @@ mysql> CREATE DATABASE ${schema} DEFAULT CHARSET utf8mb4;
 create tables
 
 ```
-$ DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake db:migrate
+$ DB_SCHEMA=${schema} DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake db:migrate
 ```
 
 ## Database initialization
 
 ```
-$ DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake db:migrate:reset
+$ DB_SCHEMA=${schema} DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake db:migrate:reset
 ```
 
 ## Key Value Store creation
@@ -95,7 +95,7 @@ $ docker run -d -p 9200:9200 -p 9300:9300 --name ${container_name} ${image_name}
 ## Search engine initialization
 
 ```
-$ DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake elasticsearch:create_index
+$ DB_SCHEMA=${schema} DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake elasticsearch:create_index
 ```
 
 ## How to run the test suite
@@ -115,6 +115,7 @@ $ bundle exec brakeman # => make apps secure!
 
 ```
 $ cp .env_template .env
+$ sed -i -e "s/DB_SCHEMA=/DB_SCHEMA=${schema}/g" .env
 $ sed -i -e "s/DB_USERNAME=/DB_USERNAME=${username}/g" .env
 $ sed -i -e "s/DB_PASSWORD=/DB_PASSWORD=${password}/g" .env
 $ sed -i -e "s/REDIS_DB=/REDIS_DB=${db number}/g" .env
