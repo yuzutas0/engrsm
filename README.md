@@ -1,7 +1,10 @@
-# My 100 Tales
+# ENGRSM
 
-This application manages your inspirations by save, edit, search.
-So, my100tales grows your ideas in order to make dreams come true.
+"Engineer Resume".
+
+## INFO
+
+fork from https://github.com/yuzutas0/my100tales
 
 ## Components
 
