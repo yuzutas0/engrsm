@@ -1,6 +1,6 @@
 #!/bin/bash
 
-new_version=2.4.1 # TODO: dynamic setting
+new_version=2.3.3 # TODO: dynamic setting
 
 brew update
 brew upgrade rbenv ruby-build
