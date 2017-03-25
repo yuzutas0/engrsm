@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # Base
+ruby '2.4.1'
 gem 'rails', '4.2.6'
 gem 'sdoc', '~> 0.4.0', group: :doc # TODO: document
 
