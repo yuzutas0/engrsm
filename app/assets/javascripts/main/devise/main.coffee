@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  my100tales_devise_form()
+  engrsm_devise_form()
 
 # execute with RubyGem 'turbolinks'
 $(document).ready(ready)

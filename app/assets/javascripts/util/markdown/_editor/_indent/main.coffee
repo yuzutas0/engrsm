@@ -1,5 +1,5 @@
 # indent - tab key
-@my100tales_util_markdown_editor_indent = (e) ->
+@engrsm_util_markdown_editor_indent = (e) ->
 
   # const
   KEY_CODE_TAB = 9
@@ -9,6 +9,6 @@
     e.preventDefault()
 
     if !e.shiftKey
-      my100tales_util_markdown_editor_indent_add(e)
+      engrsm_util_markdown_editor_indent_add(e)
     if e.shiftKey
-      my100tales_util_markdown_editor_indent_remove(e)
+      engrsm_util_markdown_editor_indent_remove(e)

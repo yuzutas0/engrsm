@@ -1,5 +1,5 @@
 # scores/form
-@my100tales_scores_form = ->
+@engrsm_scores_form = ->
 
   # loop for score index
   index = 0

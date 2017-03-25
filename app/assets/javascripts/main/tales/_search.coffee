@@ -1,5 +1,5 @@
 # tales/form
-@my100tales_tales_search = ->
+@engrsm_tales_search = ->
 
   # const
   VUE_SEARCH_ID = 'script__tale__search'

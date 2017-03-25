@@ -1,5 +1,5 @@
 # tales/detail
-@my100tales_tales_detail = ->
+@engrsm_tales_detail = ->
 
   # const
   DETAIL_ID = 'script__tale__detail'

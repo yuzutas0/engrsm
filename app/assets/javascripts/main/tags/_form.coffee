@@ -1,5 +1,5 @@
 # tags/form
-@my100tales_tags_form = ->
+@engrsm_tags_form = ->
 
   # loop for tag index length - 0 for new
   index = -1

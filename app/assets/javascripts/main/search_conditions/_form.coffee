@@ -1,5 +1,5 @@
 # tags/form
-@my100tales_conditions_form = ->
+@engrsm_conditions_form = ->
 
   # loop for tag index length - 0 for new
   index = -1

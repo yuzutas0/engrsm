@@ -1,5 +1,5 @@
 # sequels/form
-@my100tales_sequels_form = ->
+@engrsm_sequels_form = ->
 
   # loop for sequel index length - 0 for new
   index = -1
@@ -35,7 +35,7 @@
     VUE_MARKDOWN_EDITOR_DOM = VUE_MARKDOWN_DOM + '__editor'
     VUE_MARKDOWN_PREVIEW_DOM = VUE_MARKDOWN_DOM + '__preview'
     # render
-    editor = my100tales_util_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
+    editor = engrsm_util_markdown_editor(VUE_MARKDOWN_EDITOR_DOM)
     preview = My100TalesUtilMarkdownPreview.previewMarkdown(VUE_MARKDOWN_EDITOR_DOM, VUE_MARKDOWN_PREVIEW_DOM, VUE_MARKDOWN_DOM)
 
     # modal

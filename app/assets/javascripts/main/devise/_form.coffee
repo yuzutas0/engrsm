@@ -1,5 +1,5 @@
 # devise/form
-@my100tales_devise_form = ->
+@engrsm_devise_form = ->
 
   # const
   VUE_SIGNUP_ID = 'script__devise__signup'

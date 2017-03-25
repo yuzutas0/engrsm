@@ -1,5 +1,5 @@
 # undo and redo - ctrl + z key
-@my100tales_util_markdown_editor_undo = (e, VUE_MARKDOWN_EDITOR_DOM) ->
+@engrsm_util_markdown_editor_undo = (e, VUE_MARKDOWN_EDITOR_DOM) ->
 
   # const
   KEY_CODE_SMALL_Z = 90
