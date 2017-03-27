@@ -69,6 +69,7 @@ mysql> CREATE DATABASE ${schema} DEFAULT CHARSET utf8mb4;
 create tables
 
 ```
+$ DB_SCHEMA=${schema} DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake db:create
 $ DB_SCHEMA=${schema} DB_USERNAME=${username} DB_PASSWORD=${password} bundle exec rake db:migrate
 ```
 
