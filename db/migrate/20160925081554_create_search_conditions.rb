@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateSearchConditions < ActiveRecord::Migration
   def change
     create_table :search_conditions do |t|

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# frozen_string_literal: true
 app_path = '/var/www/engrsm'
 shared_path = "#{app_path}/shared"
 current_path = "#{app_path}/current"

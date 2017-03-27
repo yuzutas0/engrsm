@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # HomeController
 #
@@ -15,21 +16,15 @@ class HomeController < ApplicationController
   # -----------------------------------------------------------------
   # endpoint
   # -----------------------------------------------------------------
-  def index
-  end
+  def index; end
 
-  def terms
-  end
+  def terms; end
 
-  def privacy
-  end
+  def privacy; end
 
-  def contact
-  end
+  def contact; end
 
-  def support
-  end
+  def support; end
 
-  def about
-  end
+  def about; end
 end

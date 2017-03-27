@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # tale_finder
 module TaleFinder
   extend ActiveSupport::Concern

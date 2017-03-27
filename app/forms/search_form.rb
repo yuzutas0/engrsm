@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # search form
 class SearchForm
   attr_accessor :page, :keyword, :tags, :scores, :sort, :save, :name, :query_string

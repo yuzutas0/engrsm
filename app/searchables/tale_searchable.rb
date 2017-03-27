@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # searchables/tale_searchable.rb
 module TaleSearchable
   extend ActiveSupport::Concern

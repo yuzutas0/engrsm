@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # BackupsController
 #
@@ -5,7 +6,7 @@ class BackupsController < ApplicationController
   # -----------------------------------------------------------------
   # Const
   # -----------------------------------------------------------------
-  RESPONSE_TYPE = 'application/zip'.freeze
+  RESPONSE_TYPE = 'application/zip'
 
   # -----------------------------------------------------------------
   # endpoint

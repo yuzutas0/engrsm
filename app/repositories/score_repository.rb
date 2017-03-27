@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # score_repository
 class ScoreRepository
   # -----------------------------------------------------------------
@@ -28,7 +29,7 @@ class ScoreRepository
   # => e.g. { 1: 21, 2: 15, 3: 23 }
   def self.view_number_and_attached_count(user_id)
     # query
-    query = <<-'SQL'.freeze
+    query = <<-'SQL'
       SELECT
         S.view_number,
         COUNT(R.id)
@@ -52,7 +53,7 @@ class ScoreRepository
   # => e.g. { 'testOne:': 21, 'test2:': 15, 'test_three:': 23 }
   def self.key_and_attached_count(user_id)
     # query
-    query = <<-'SQL'.freeze
+    query = <<-'SQL'
       SELECT
         CONCAT(S.key_name, ':'),
         count(R.id)
@@ -79,7 +80,7 @@ class ScoreRepository
     # valid
     return false if key.blank?
     # query
-    query = <<-'SQL'.freeze
+    query = <<-'SQL'
       UPDATE
         scores S
       SET

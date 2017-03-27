@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # tale_score_relationship_service
 class TaleScoreRelationshipService
   # -----------------------------------------------------------------

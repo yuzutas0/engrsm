@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 # searchables/application_searchable.rb
 module ApplicationSearchable
   # called by model
-  INDEX_NAME = "es_engrsm_tale_#{Rails.env}".freeze
+  INDEX_NAME = "es_engrsm_tale_#{Rails.env}"
   CLIENT = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
 
   # called by searchable
@@ -72,11 +73,13 @@ module ApplicationSearchable
 
     # delete index
     def delete_index(options = {})
-      begin
-        __elasticsearch__.client.indices.delete index: index_name
-      rescue
-        nil
-      end if options[:force]
+      if options[:force]
+        begin
+          __elasticsearch__.client.indices.delete index: index_name
+        rescue
+          nil
+        end
+      end
     end
   end
 end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateSequels < ActiveRecord::Migration
   def change
     create_table :sequels do |t|

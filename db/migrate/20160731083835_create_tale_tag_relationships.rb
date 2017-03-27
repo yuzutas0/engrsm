@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateTaleTagRelationships < ActiveRecord::Migration
   def change
     create_table :tale_tag_relationships do |t|

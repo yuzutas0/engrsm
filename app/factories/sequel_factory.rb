@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # sequel_factory
 class SequelFactory
   # -----------------------------------------------------------------

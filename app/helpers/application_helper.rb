@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # ApplicationHelper
 #
@@ -29,8 +30,7 @@ module ApplicationHelper
   def ignore_params_list
     params = [:controller, :action, :locale, # common
               :view_number,                  # tale, sequel
-              :save, :name                   # search tales
-    ]
+              :save, :name] # search tales
     Hash[*[params, Array.new(params.size)].transpose.flatten]
   end
 

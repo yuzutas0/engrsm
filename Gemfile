@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 
 # Base
@@ -9,38 +10,38 @@ gem 'sdoc', '~> 0.4.0', group: :doc # TODO: document
 gem 'dotenv-rails'
 
 # M/W
+gem 'elasticsearch-model', '0.1.9'
+gem 'elasticsearch-rails', '0.1.9'
 gem 'mysql2'
 gem 'redis-rails'
-gem 'elasticsearch-rails', '0.1.9'
-gem 'elasticsearch-model', '0.1.9'
 
 # SQL Performance
 gem 'activerecord-import'
 
 # AP
-gem 'jbuilder', '~> 2.0'
 gem 'devise'
+gem 'jbuilder', '~> 2.0'
 
 # FILE
 gem 'rubyzip'
 
 # View
+gem 'data-confirm-modal'
 gem 'font-awesome-rails'
+gem 'gemoji', '~> 2.1.0'
 gem 'kaminari'
 gem 'redcarpet'
-gem 'gemoji', '~> 2.1.0'
-gem 'data-confirm-modal'
 
 # Stylesheet
-gem 'sassc-rails' # gem 'sass-rails', '~> 5.0'
 gem 'honoka-rails', '~> 3.3.6.0' # gem 'bootstrap-sass'
+gem 'sassc-rails' # gem 'sass-rails', '~> 5.0'
 
 # JavaScript
-gem 'uglifier', '>= 1.3.0'
+gem 'bower-rails'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails', '4.1.1'
+gem 'uglifier', '>= 1.3.0'
 gem 'vuejs-rails', '1.0.21'
-gem 'bower-rails'
 
 # View Performance
 gem 'turbolinks', '~> 2.5.0'
@@ -55,13 +56,13 @@ group :development do
   # Performance
   gem 'activerecord-cause' # tell caller_location
   gem 'bullet' # validate N+1 query
-  gem 'stackprof' # call-stack profiler
   gem 'spring' # preload application
+  gem 'stackprof' # call-stack profiler
 
   # Debug
-  gem 'web-console', '~> 2.0'
   gem 'better_errors'
   gem 'byebug'
+  gem 'web-console', '~> 2.0'
 
   # Data
   gem 'yaml_db'
@@ -70,17 +71,17 @@ group :development do
   gem 'letter_opener'
 
   # Static analysis
-  gem 'rubocop', require: false
   gem 'rails_best_practices', require: false
+  gem 'rubocop', require: false
 
   # Security
   gem 'brakeman', require: false
 
   # Deploy
   gem 'capistrano', '~> 3.7.0'
-  gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
 end
 

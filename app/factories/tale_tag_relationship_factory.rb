@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # tale_tag_relationship_factory
 class TaleTagRelationshipFactory
   # -----------------------------------------------------------------
@@ -12,7 +13,7 @@ class TaleTagRelationshipFactory
     return if tag_name_list.blank?
 
     # query
-    query = <<-'SQL'.freeze
+    query = <<-'SQL'
       INSERT INTO
           tale_tag_relationships (
             tale_id,

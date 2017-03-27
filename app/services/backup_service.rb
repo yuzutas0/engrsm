@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # backup_service
 class BackupService
   # -----------------------------------------------------------------
@@ -9,8 +10,8 @@ class BackupService
   # Const
   # -----------------------------------------------------------------
   DIR_NAME_PREFIX = Constants::PRODUCT_NAME_FOR_TITLE.downcase.freeze
-  ZIP_FILE_NAME_SUFFIX = '.zip'.freeze
-  TEXT_FILE_SUFFIX = '.txt'.freeze
+  ZIP_FILE_NAME_SUFFIX = '.zip'
+  TEXT_FILE_SUFFIX = '.txt'
   CONTENT_SEPARATOR = ('-' * 64).freeze
 
   # -----------------------------------------------------------------

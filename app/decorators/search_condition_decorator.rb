@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # search_condition_decorator
 class SearchConditionDecorator < BaseDecorator
   # add flash message about error reasons

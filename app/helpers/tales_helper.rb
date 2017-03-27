@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # TalesHelper
 #
@@ -36,13 +37,15 @@ module TalesHelper
   # render emoji-markdown to illustration
   # copy from gemoji's readme
   def emojify(content)
-    h(content).to_str.gsub(/:([\w+-]+):/) do |match|
-      emoji = Emoji.find_by_alias(Regexp.last_match(1))
-      if emoji
-        %(<img alt="#{Regexp.last_match(1)}" src="#{asset_path("emoji/#{emoji.image_filename}")}" style="vertical-align:middle" width="20" height="20" />)
-      else
-        match
-      end
-    end.html_safe if content.present?
+    if content.present?
+      h(content).to_str.gsub(/:([\w+-]+):/) do |match|
+        emoji = Emoji.find_by_alias(Regexp.last_match(1))
+        if emoji
+          %(<img alt="#{Regexp.last_match(1)}" src="#{asset_path("emoji/#{emoji.image_filename}")}" style="vertical-align:middle" width="20" height="20" />)
+        else
+          match
+        end
+      end.html_safe
+    end
   end
 end

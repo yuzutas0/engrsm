@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # lib/tasks/elasticsearch.rake
 namespace :elasticsearch do
   desc 'Create index for Elasticsearch'

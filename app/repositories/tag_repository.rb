@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # tag_repository
 class TagRepository
   # -----------------------------------------------------------------
@@ -19,7 +20,7 @@ class TagRepository
   # => e.g. { 1: 21, 2: 15, 3: 23 }
   def self.view_number_and_attached_count(user_id)
     # query
-    query = <<-'SQL'.freeze
+    query = <<-'SQL'
       SELECT
         T.view_number,
         COUNT(R.id)
@@ -44,7 +45,7 @@ class TagRepository
   # => e.g. { 'testOne': 21, 'test2': 15, 'test_three': 23 }
   def self.name_and_attached_count(user_id)
     # query
-    query = <<-'SQL'.freeze
+    query = <<-'SQL'
       SELECT
         T.name,
         COUNT(R.id)

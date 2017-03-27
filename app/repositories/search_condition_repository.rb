@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # search_condition_repository
 class SearchConditionRepository
   # -----------------------------------------------------------------
@@ -27,7 +28,7 @@ class SearchConditionRepository
     delete_size = present_size - Constants::SEARCH_CONDITION_RECORD_SIZE
     return unless delete_size > 0
     # query
-    query = <<-'SQL'.freeze
+    query = <<-'SQL'
       DELETE
       FROM
         search_conditions

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # override to customize the tag
 
 # action_view

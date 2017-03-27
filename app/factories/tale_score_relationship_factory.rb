@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # tale_score_relationship_factory
 class TaleScoreRelationshipFactory
   # -----------------------------------------------------------------
@@ -13,7 +14,7 @@ class TaleScoreRelationshipFactory
     return if score_hash_list.blank?
 
     # query
-    query = <<-'SQL'.freeze
+    query = <<-'SQL'
       INSERT INTO
           tale_score_relationships (
             tale_id,

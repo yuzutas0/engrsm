@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # tale form
 class TaleForm
   attr_reader :tags, :scores

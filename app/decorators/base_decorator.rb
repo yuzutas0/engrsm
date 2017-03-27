@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 # common_decorator
 class BaseDecorator
   # const
-  NEW_LINE_TAG = '<br>'.freeze
+  NEW_LINE_TAG = '<br>'
 
   # add flash message about error reasons
   def self.flash_for_redirect(model, flash)
