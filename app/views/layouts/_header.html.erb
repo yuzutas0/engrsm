@@ -13,7 +13,7 @@
       <% logo_link = user_signed_in? ? tales_path : root_path %>
       <%= link_to logo_link, class: 'layout__shared__header__inner__layout__logo' do %>
           <h1 class="layout__shared__header__inner__layout__logo__inner">
-            <%= fa_icon('fire') + Constants::PRODUCT_NAME_FOR_HEADER %>
+            <%= fa_icon('address-book-o') + ' ' + Constants::PRODUCT_NAME_FOR_HEADER %>
           </h1>
       <% end %>
     </div>

@@ -30,7 +30,7 @@
         @extend .navbar-brand;
 
         .layout__shared__header__inner__layout__logo__inner {
-          @extend .text-info;
+          @extend .text-success;
           margin: 0;
           bottom: 0;
           font-size: $font_size_large;
