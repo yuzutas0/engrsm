@@ -14,7 +14,6 @@ ja:
         signup: '新規登録'
         account: 'アカウント'
         tags: 'タグ一覧'
-        scores: 'スコア一覧'
         conditions:
           index: '検索条件一覧'
           edit: '検索条件を編集'

@@ -63,7 +63,6 @@ class BackupService
       [
         CONTENT_SEPARATOR, '[title] ' + tale.title, CONTENT_SEPARATOR,
         '[tag] ' + tale.tags.map(&:name).join(','),
-        '[score] ' + tale.scores.map(&:record_to_text).join(','),
         CONTENT_SEPARATOR,
         '[created at] ' + local_time(tale.created_at, user),
         '[updated at] ' + local_time(tale.updated_at, user),

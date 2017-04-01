@@ -50,10 +50,9 @@ class TaleDecorator < BaseDecorator
     def tale_tags_for_form(tale, showing_tags)
       # top priority
       return showing_tags if showing_tags.present?
-      # merge tags and scores
+      # set tags
       list = []
       list << tale.tags.pluck(:name) if tale.tags.present?
-      list << tale.scores.map { |i| i.key_name + ':' + i.value } if tale.scores.present?
       list.join(',')
     end
   end

@@ -47,7 +47,7 @@ ja:
         current_info: '* パスワードの変更時には入力必須'
         update: 'アカウント情報の更新'
         backup: 'バックアップのダウンロード'
-        backup_info: '* バックアップファイルには、各種投稿とタグ・スコア情報が含まれています。'
+        backup_info: '* バックアップファイルには、各種投稿とタグ情報が含まれています。'
         delete: 'アカウントの削除 (サービスを退会する)'
         delete_title: '本当に削除しますか'
         delete_confirm_html: 'あなたのアカウント <strong>%{name}</strong> を削除してもよろしいですか?'

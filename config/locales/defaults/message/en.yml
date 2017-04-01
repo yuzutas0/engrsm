@@ -16,5 +16,4 @@ en:
       blank:
         sequel: 'There is no sequel.'
         tag: 'There is no tag.'
-        score: 'There is no score.'
         conditions: 'There is no search'

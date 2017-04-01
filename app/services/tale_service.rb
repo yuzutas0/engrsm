@@ -77,7 +77,6 @@ class TaleService
     def change_records(tale, option_form, user, success)
       return unless success
       TagService.change_tags(tale.id, option_form.tags, user)
-      ScoreService.change_scores(tale.id, option_form.scores, user)
     end
 
     # -----------------------------------------------------------------

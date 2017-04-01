@@ -14,7 +14,6 @@ en:
         signup: 'SignUp'
         account: 'Account'
         tags: 'TagList'
-        scores: 'ScoreList'
         conditions:
           index: 'SearchConditionList'
           edit: 'Edit Search Condition List'

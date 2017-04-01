@@ -7,5 +7,3 @@ en:
       option_-2: 'Older Create'
       option_-3: 'Newer Update'
       option_-4: 'Older Update'
-      option_bigger: 'Bigger %{key}'
-      option_smaller: 'Smaller %{key}'

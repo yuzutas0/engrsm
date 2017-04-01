@@ -7,7 +7,6 @@
   VUE_SEARCH_CONDITION_SAVE_DOM = '#input_condition_save'
   VUE_SEARCH_CONDITION_NAME_DOM = '#script__tale__search__condition__name'
 
-  VUE_SEARCH_CONDITION_SCORE_ID_PREFIX = 'input_condition_score_'
   VUE_SEARCH_CONDITION_COMPARE_DOM_PREFIX = '#script__tale__search__condition__compare__'
   VUE_SEARCH_CONDITION_VALUE_DOM_PREFIX = '#script__tale__search__condition__value__'
 
@@ -38,19 +37,6 @@
     # disabled
     # save / name
     EngrsmUtilDisable.setDisabled(VUE_SEARCH_CONDITION_SAVE_DOM, VUE_SEARCH_CONDITION_NAME_DOM)
-    # score (key, compare, value)
-    index = -1
-    hashForSort = {}
-    loop
-      index++
-      break if document.getElementById(VUE_SEARCH_CONDITION_SCORE_ID_PREFIX + index) == null
-      dom = '#' + VUE_SEARCH_CONDITION_SCORE_ID_PREFIX + index
-      hashForSort[$(dom).val()] = dom
-      EngrsmUtilDisable.setDisabled(
-        dom,
-        VUE_SEARCH_CONDITION_COMPARE_DOM_PREFIX + index,
-        VUE_SEARCH_CONDITION_VALUE_DOM_PREFIX + index
-      )
     # sort
     index = -1
     loop

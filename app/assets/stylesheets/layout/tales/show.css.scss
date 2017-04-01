@@ -32,13 +32,11 @@
     @extend .list-group;
 
     .layout__tale__show__information__label,
-    .layout__tale__show__information__star,
     .layout__tale__show__information__time {
       @extend .list-group-item;
     }
 
     .layout__tale__show__information__label__heading,
-    .layout__tale__show__information__star__heading,
     .layout__tale__show__information__time__heading {
       @extend .list-group-item-heading;
     }

@@ -60,26 +60,6 @@ class @EngrsmUtilTagsinput
 
   # set custom event
   @setCustomEvent = (formInputDOM) ->
-    # make score unique
-    getScoreKeyByTagForm = (tag) ->
-      separatorIndex = tag.indexOf(':')
-      return '' if separatorIndex < 0
-      return tag.substring(0, separatorIndex)
-
-    makeScoreUnique = (event) ->
-      scoreKey = getScoreKeyByTagForm(event.item)
-      return if scoreKey == ''
-      targets = []
-      for item in $(formInputDOM).tagsinput('items')
-        itemKey = getScoreKeyByTagForm(item)
-        targets.push(item) if itemKey == scoreKey
-      $(formInputDOM).tagsinput('remove', item) for item in targets
-
-    $(formInputDOM).on('beforeItemAdd', (event) ->
-      event.item = EngrsmUtilXss.escapeString(event.item)
-      makeScoreUnique(event)
-    )
-
     # block XSS for saving data
     $(formInputDOM).on('itemAdded', (event) ->
       escapeTagsInput(formInputDOM)

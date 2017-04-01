@@ -31,50 +31,6 @@
       </div>
       <hr>
 
-      <p><%= t('.score') %></p>
-      <div class="module__form__checkbox module__form__field">
-        <%= t('views.message.blank.score') if scores.blank? %>
-        <% scores.map(&:key_name).uniq.each_with_index do |key, index| %>
-          <div class="layout__tale__search__condition__score">
-
-            <% id = "input_condition_score_#{index}" %>
-            <%= check_box_tag 'scores[key][]', key, queries.scores[:key].present? && queries.scores[:key].include?(key), id: id %>
-            <%= label_tag id, class: 'module__form__checkbox__label layout__tale__search__condition__score__key' do %>
-              <p class="module__form__checkbox__label__inner"><%= key %></p>
-            <% end %>
-
-            <select name="scores[co][]"
-                    class="module__form__field__text module__form__field__text--inline"
-                    id="script__tale__search__condition__compare__<%= index %>">
-              <% compare_master.each do |compare| %>
-                <% co = '' %>
-                <% co = queries.scores[:co].find { |item| item.split(':', 2)[0] == key } if queries.scores[:co].present? %>
-                <% co = co.split(':', 2)[1] if co.present? %>
-                <% selected = co == compare.keys.first.to_s %>
-                <option value="<%= key + ':' + compare.keys.first.to_s %>" <% if selected %>selected<% end %>>
-                  <%= compare.values.first %>
-                </option>
-              <% end %>
-            </select>
-
-            <select name="scores[val][]"
-                    class="module__form__field__text module__form__field__text--inline"
-                    id="script__tale__search__condition__value__<%= index %>">
-              <% (scores.select { |score| score.key_name == key }).each do |score| %>
-                <% val = '' %>
-                <% val = queries.scores[:val].find { |item| item.split(':', 2)[0] == key } if queries.scores[:val].present? %>
-                <% val = val.split(':', 2)[1] if val.present? %>
-                <% selected = val == score.value %>
-                <option value="<%= key + ':' + score.value %>" <% if selected %>selected<% end %>>
-                  <%= score.value %>(<%= scores_attached[score.view_number] %>)
-                </option>
-              <% end %>
-            </select>
-          </div>
-        <% end %>
-      </div>
-      <hr>
-
       <p><%= t('.sort') %></p>
       <div class="module__form__radiobutton">
         <% default_sort_master.each_with_index do |_item, index| %>
@@ -86,20 +42,7 @@
             </p>
           <% end %>
         <% end %>
-
-        <% score_sort_master.each_with_index do |item, index| %>
-          <% id_string = "#{item.keys.first}:#{item.values.first}" %>
-          <%= radio_button_tag 'sort', id_string, queries.sort == id_string, id: "input_sort_#{index}" %>
-          <%= label_tag "input_sort_#{index}", class: 'module__form__radiobutton__label' do %>
-            <p class="module__form__radiobutton__label__inner">
-              <% order = item.values.first == :DESC ? 'bigger' : 'smaller' %>
-              <% text_path = 'master.sort.option_' + order %>
-              <%= t(text_path, key: item.keys.first.to_s) %>
-            </p>
-          <% end %>
-        <% end %>
       </div>
-      <p><%= t('.sort_attention') %></p>
       <hr>
 
       <p><%= t('.save_title', max: Constants::SEARCH_CONDITION_RECORD_SIZE) %></p>

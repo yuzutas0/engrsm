@@ -6,9 +6,6 @@
              is_searched: @is_searched,
              tags: @tags,
              tags_attached: @tags_attached,
-             scores: @scores,
-             scores_attached: @scores_attached,
-             score_sort_master: @score_sort_master,
              default_sort_master: @default_sort_master,
              compare_master: @compare_master,
              search_conditions: @search_conditions %>
@@ -46,18 +43,6 @@
           <% path = tales_path('tags':{'id':[tag.view_number]}) %>
           <%= link_to path, class: 'module__label layout__tales__index__list__item__tags' do %>
             <%= fa_icon('tag') + ' ' + tag.name %>
-          <% end %>
-        <% end %>
-
-        <% tale.tale_score_relationships.each do |relation| %>
-          <% score = (@scores.select { |score| score.id == relation.score_id }).first %>
-          <% path = tales_path('scores': {
-              'key': [score.key_name],
-              'co': [score.key_name + ':eq'],
-              'val': [score.key_name + ':' + score.value]
-          }) %>
-          <%= link_to path, class: 'module__label layout__tales__index__list__item__scores' do %>
-            <%= fa_icon('star') + ' ' + score.key_name + ' : ' + score.value %>
           <% end %>
         <% end %>
       </div>

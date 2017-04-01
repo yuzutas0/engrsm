@@ -42,8 +42,7 @@ class TalesController < ApplicationController
   # e.g. (tags.select { |tag| tag.id == relation.tag_id })[0].name
   # because avoid to throw query about tag records twice
   def index
-    @score_sort_master = ScoreService.sort_master(current_user.id)
-    @queries = SearchForm.new(params, request.fullpath, @score_sort_master)
+    @queries = SearchForm.new(params, request.fullpath)
     @is_searched, @search_conditions = SearchConditionService.request(current_user, @queries)
     @tales, @sequels_attached = TaleService.list(current_user.id, @queries)
     @tags, @tags_attached = TagService.list(current_user.id)
@@ -110,7 +109,6 @@ class TalesController < ApplicationController
   def ready_form(tale, user_id, showing_tags = '')
     @form = TaleDecorator.option_form(tale, showing_tags)
     @tags = TagService.name_and_attached_count(user_id)
-    @tags.merge!(ScoreService.key_and_attached_count(user_id))
   end
 
   # -----------------------------------------------------------------
