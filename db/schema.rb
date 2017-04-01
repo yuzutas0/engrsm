@@ -13,22 +13,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20_170_205_080_455) do
-  create_table 'scores', force: :cascade do |t|
-    t.string   'key_name',    limit: 255,             null: false
-    t.string   'value',       limit: 255,             null: false
-    t.integer  'view_number', limit: 4, default: 0, null: false
-    t.integer  'user_id',     limit: 4,               null: false
-    t.datetime 'created_at',                          null: false
-    t.datetime 'updated_at',                          null: false
-  end
-
-  add_index 'scores', %w(key_name value user_id), name: 'index_scores_on_key_name_and_value_and_user_id', unique: true, using: :btree
-  add_index 'scores', ['key_name'], name: 'index_scores_on_key_name', using: :btree
-  add_index 'scores', ['user_id'], name: 'index_scores_on_user_id', using: :btree
-  add_index 'scores', ['value'], name: 'index_scores_on_value', using: :btree
-  add_index 'scores', %w(view_number user_id), name: 'index_scores_on_view_number_and_user_id', unique: true, using: :btree
-  add_index 'scores', ['view_number'], name: 'index_scores_on_view_number', using: :btree
-
   create_table 'search_conditions', force: :cascade do |t|
     t.string   'name',         limit: 255
     t.text     'query_string', limit: 65_535, null: false
@@ -67,15 +51,6 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
   add_index 'tags', ['user_id'], name: 'index_tags_on_user_id', using: :btree
   add_index 'tags', %w(view_number user_id), name: 'index_tags_on_view_number_and_user_id', unique: true, using: :btree
   add_index 'tags', ['view_number'], name: 'index_tags_on_view_number', using: :btree
-
-  create_table 'tale_score_relationships', force: :cascade do |t|
-    t.integer 'tale_id',  limit: 4, null: false
-    t.integer 'score_id', limit: 4, null: false
-  end
-
-  add_index 'tale_score_relationships', ['score_id'], name: 'index_tale_score_relationships_on_score_id', using: :btree
-  add_index 'tale_score_relationships', %w(tale_id score_id), name: 'index_tale_score_relationships_on_tale_id_and_score_id', unique: true, using: :btree
-  add_index 'tale_score_relationships', ['tale_id'], name: 'index_tale_score_relationships_on_tale_id', using: :btree
 
   create_table 'tale_tag_relationships', force: :cascade do |t|
     t.integer 'tale_id', limit: 4, null: false
@@ -124,12 +99,9 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
   add_index 'users', ['email'], name: 'index_users_on_email', unique: true, using: :btree
   add_index 'users', ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
 
-  add_foreign_key 'scores', 'users'
   add_foreign_key 'search_conditions', 'users'
   add_foreign_key 'sequels', 'tales'
   add_foreign_key 'tags', 'users'
-  add_foreign_key 'tale_score_relationships', 'scores'
-  add_foreign_key 'tale_score_relationships', 'tales'
   add_foreign_key 'tale_tag_relationships', 'tags'
   add_foreign_key 'tale_tag_relationships', 'tales'
   add_foreign_key 'tales', 'users'
