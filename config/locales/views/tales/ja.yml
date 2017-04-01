@@ -25,7 +25,7 @@ ja:
         searched: '検索結果'
     form:
       title_placeholder: 'タイトル'
-      tag_placeholder: 'タグ1 タグ2 スコア:値'
+      tag_placeholder: 'タグ1 タグ2'
       content_placeholder: 'マークダウンで記入してください'
       editor: '編集'
       preview: 'プレビュー'

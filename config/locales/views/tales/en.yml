@@ -25,7 +25,7 @@ en:
         searched: 'Searched'
     form:
       title_placeholder: 'Title'
-      tag_placeholder: 'Tag1 Tag2 Score:Value'
+      tag_placeholder: 'Tag1 Tag2'
       content_placeholder: 'Write down by markdown'
       editor: 'Editor'
       preview: 'Preview'
