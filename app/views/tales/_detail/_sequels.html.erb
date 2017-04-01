@@ -1,5 +1,5 @@
 <div id="tab__third" class="tab-pane fade <%= tab_class[2][1] %>"> <!-- tab -->
-  <%= render 'sequels/new', new_sequel: new_sequel, tale: tale %>
-  <%= render 'sequels/index', tale: tale %>
-  <%= t('views.message.blank.sequel') if tale.sequels.blank? %>
+  <%= render 'comments/new', new_comment: new_comment, tale: tale %>
+  <%= render 'comments/index', tale: tale %>
+  <%= t('views.message.blank.comment') if tale.comments.blank? %>
 </div>

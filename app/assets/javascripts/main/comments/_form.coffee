@@ -1,21 +1,21 @@
-# sequels/form
-@engrsm_sequels_form = ->
+# comments/form
+@engrsm_comments_form = ->
 
-  # loop for sequel index length - 0 for new
+  # loop for comment index length - 0 for new
   index = -1
   loop
     index++
 
     # DOM
     # const
-    VUE_EDIT_ID = "script__sequel__" + index
+    VUE_EDIT_ID = "script__comment__" + index
     VUE_EDIT_DOM = "#" + VUE_EDIT_ID
     # check
     break if document.getElementById(VUE_EDIT_ID) == null
 
     # switch
     # const
-    VUE_MARKDOWN_DOM = '#script__sequel__form__' + index
+    VUE_MARKDOWN_DOM = '#script__comment__form__' + index
     SWITCH_MARKDOWN_EDITOR_DOM = VUE_MARKDOWN_DOM + "__editor__tab__switch"
     SWITCH_MARKDOWN_PREVIEW_DOM = VUE_MARKDOWN_DOM + "__preview__tab__switch"
     VUE_MARKDOWN_EDITOR_OUTER_DOM = VUE_MARKDOWN_DOM + "__editor__tab__content"

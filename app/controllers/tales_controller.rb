@@ -44,7 +44,7 @@ class TalesController < ApplicationController
   def index
     @queries = SearchForm.new(params, request.fullpath)
     @is_searched, @search_conditions = SearchConditionService.request(current_user, @queries)
-    @tales, @sequels_attached = TaleService.list(current_user.id, @queries)
+    @tales, @comments_attached = TaleService.list(current_user.id, @queries)
     @tags, @tags_attached = TagService.list(current_user.id)
     @default_sort_master = SearchForm.sort_master
     @compare_master = SearchForm.compare_master
@@ -52,7 +52,7 @@ class TalesController < ApplicationController
 
   # GET /tales/1
   def show
-    @new_sequel = Sequel.new
+    @new_comment = Comment.new
     @tab_class = TaleDecorator.tab(params)
   end
 

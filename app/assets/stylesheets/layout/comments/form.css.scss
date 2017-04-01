@@ -1,4 +1,4 @@
-// sequels index
+// comments index
 
 // import
 @import "base/const";
@@ -6,10 +6,10 @@
 @import "module/markdown";
 
 // main
-.layout__sequels__form__outer {
+.layout__comments__form__outer {
   width: 100%;
 
-  .layout__sequels__form {
+  .layout__comments__form {
 
     @mixin size() {
       min-height: $editor_size_middle; // bootstrapによる上書き height: auto; 回避のため
@@ -21,11 +21,11 @@
       }
     }
 
-    .layout__sequels__form__content {
+    .layout__comments__form__content {
       @include size();
     }
 
-    .layout__sequels__form__preview {
+    .layout__comments__form__preview {
       @include size();
       padding: 0;
       overflow: auto;

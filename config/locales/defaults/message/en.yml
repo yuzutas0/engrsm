@@ -14,6 +14,6 @@ en:
         success: 'Successfully destroyed.'
       or_login_html: 'or %{login}, when you have account.'
       blank:
-        sequel: 'There is no sequel.'
+        comment: 'There is no comment.'
         tag: 'There is no tag.'
         conditions: 'There is no search'

@@ -1,51 +1,51 @@
 # frozen_string_literal: true
 #
-# SequelsController
+# CommentsController
 #
-class SequelsController < ApplicationController
+class CommentsController < ApplicationController
   # -----------------------------------------------------------------
   # filter
   # -----------------------------------------------------------------
-  before_action :set_sequel, only: [:update, :destroy]
+  before_action :set_comment, only: [:update, :destroy]
 
   # -----------------------------------------------------------------
   # endpoint - create
   # -----------------------------------------------------------------
-  # POST /sequels
+  # POST /comments
   def create
-    @tale, @sequel, success = SequelService.create(sequel_params, params[:view_number], current_user.id)
+    @tale, @comment, success = CommentService.create(comment_params, params[:view_number], current_user.id)
     if success
       flash[:notice] = t('views.message.create.success')
     else
-      flash[:alert] = SequelDecorator.flash(@sequel, flash)
+      flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/tales/#{params[:view_number]}?sequels=created"
+    redirect_to "/tales/#{params[:view_number]}?comments=created"
   end
 
   # -----------------------------------------------------------------
   # endpoint - update
   # -----------------------------------------------------------------
-  # PATCH /sequels
+  # PATCH /comments
   def update
-    if @sequel.update(sequel_params)
+    if @comment.update(comment_params)
       flash[:notice] = t('views.message.update.success')
     else
-      flash[:alert] = SequelDecorator.flash(@sequel, flash)
+      flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/tales/#{params[:view_number]}?sequels=updated"
+    redirect_to "/tales/#{params[:view_number]}?comments=updated"
   end
 
   # -----------------------------------------------------------------
   # endpoint - delete
   # -----------------------------------------------------------------
-  # DELETE /sequels
+  # DELETE /comments
   def destroy
-    if @sequel.destroy
+    if @comment.destroy
       flash[:notice] = t('views.message.destroy.success')
     else
-      flash[:alert] = SequelDecorator.flash(@sequel, flash)
+      flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/tales/#{params[:view_number]}?sequels=deleted"
+    redirect_to "/tales/#{params[:view_number]}?comments=deleted"
   end
 
   # -----------------------------------------------------------------
@@ -54,13 +54,13 @@ class SequelsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_sequel
-    @sequel = SequelService.detail(current_user.id, params[:view_number], params[:sequel_view_number])
-    routing_error if @sequel.blank?
+  def set_comment
+    @comment = CommentService.detail(current_user.id, params[:view_number], params[:comment_view_number])
+    routing_error if @comment.blank?
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def sequel_params
-    params.require(:sequel).permit(:content)
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 end

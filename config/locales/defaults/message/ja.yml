@@ -14,6 +14,6 @@ ja:
         success: '削除に成功しました.'
       or_login_html: '既に登録済みの方は %{login}'
       blank:
-        sequel: '追記はありません.'
+        comment: 'コメントはありません.'
         tag: '登録がありません.'
         conditions: '検索条件がありません.'

@@ -13,6 +13,18 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20_170_205_080_455) do
+  create_table 'comments', force: :cascade do |t|
+    t.text     'content',     limit: 65_535
+    t.integer  'view_number', limit: 4, default: 0, null: false
+    t.integer  'tale_id',     limit: 4
+    t.datetime 'created_at',                            null: false
+    t.datetime 'updated_at',                            null: false
+  end
+
+  add_index 'comments', ['tale_id'], name: 'index_comments_on_tale_id', using: :btree
+  add_index 'comments', %w(view_number tale_id), name: 'index_comments_on_view_number_and_tale_id', unique: true, using: :btree
+  add_index 'comments', ['view_number'], name: 'index_comments_on_view_number', using: :btree
+
   create_table 'search_conditions', force: :cascade do |t|
     t.string   'name',         limit: 255
     t.text     'query_string', limit: 65_535, null: false
@@ -26,18 +38,6 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
   add_index 'search_conditions', ['user_id'], name: 'index_search_conditions_on_user_id', using: :btree
   add_index 'search_conditions', %w(view_number user_id), name: 'index_search_conditions_on_view_number_and_user_id', unique: true, using: :btree
   add_index 'search_conditions', ['view_number'], name: 'index_search_conditions_on_view_number', using: :btree
-
-  create_table 'sequels', force: :cascade do |t|
-    t.text     'content',     limit: 65_535
-    t.integer  'view_number', limit: 4, default: 0, null: false
-    t.integer  'tale_id',     limit: 4
-    t.datetime 'created_at',                            null: false
-    t.datetime 'updated_at',                            null: false
-  end
-
-  add_index 'sequels', ['tale_id'], name: 'index_sequels_on_tale_id', using: :btree
-  add_index 'sequels', %w(view_number tale_id), name: 'index_sequels_on_view_number_and_tale_id', unique: true, using: :btree
-  add_index 'sequels', ['view_number'], name: 'index_sequels_on_view_number', using: :btree
 
   create_table 'tags', force: :cascade do |t|
     t.string   'name',        limit: 255
@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
   add_index 'users', ['email'], name: 'index_users_on_email', unique: true, using: :btree
   add_index 'users', ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
 
+  add_foreign_key 'comments', 'tales'
   add_foreign_key 'search_conditions', 'users'
-  add_foreign_key 'sequels', 'tales'
   add_foreign_key 'tags', 'users'
   add_foreign_key 'tale_tag_relationships', 'tags'
   add_foreign_key 'tale_tag_relationships', 'tales'

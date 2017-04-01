@@ -32,4 +32,4 @@ ja:
     show:
       content: '投稿内容'
       information: '情報'
-      sequels: '追記'
+      comments: 'コメント'

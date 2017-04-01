@@ -1,16 +1,16 @@
 # frozen_string_literal: true
-# sequel_service
-class SequelService
+# comment_service
+class CommentService
   # -----------------------------------------------------------------
   # Create
   # -----------------------------------------------------------------
 
   def self.create(params, tale_view_number, user_id)
-    Sequel.transaction do
+    Comment.transaction do
       tale = TaleRepository.detail(tale_view_number, user_id)
-      sequel = SequelFactory.instance(params, tale)
-      success = sequel.save
-      return tale, sequel, success
+      comment = CommentFactory.instance(params, tale)
+      success = comment.save
+      return tale, comment, success
     end
   end
 
@@ -18,9 +18,9 @@ class SequelService
   # Read - detail
   # -----------------------------------------------------------------
 
-  def self.detail(user_id, tale_view_number, sequel_view_number)
+  def self.detail(user_id, tale_view_number, comment_view_number)
     TaleRepository.detail(tale_view_number, user_id)
-                  .sequels
-                  .find_by(view_number: sequel_view_number)
+                  .comments
+                  .find_by(view_number: comment_view_number)
   end
 end

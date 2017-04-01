@@ -1,7 +1,7 @@
-# sequels view
+# comments view
 
 ja:
-  sequels:
+  comments:
     form:
       editor: '編集'
       preview: 'プレビュー'

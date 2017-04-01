@@ -67,20 +67,20 @@ class BackupService
         '[created at] ' + local_time(tale.created_at, user),
         '[updated at] ' + local_time(tale.updated_at, user),
         CONTENT_SEPARATOR, '[content]', CONTENT_SEPARATOR, tale.content
-      ].concat(sequel_file_content(tale.sequels, user)).each { |i| s.puts(i) }
+      ].concat(comment_file_content(tale.comments, user)).each { |i| s.puts(i) }
     end
 
-    def sequel_file_content(sequels, user)
-      array = [CONTENT_SEPARATOR, '[sequel]', CONTENT_SEPARATOR]
-      sequels.each do |sequel|
+    def comment_file_content(comments, user)
+      array = [CONTENT_SEPARATOR, '[comment]', CONTENT_SEPARATOR]
+      comments.each do |comment|
         array << [
-          '[number] ' + sequel.view_number.to_s,
-          '[created at] ' + local_time(sequel.created_at, user),
-          '[updated at] ' + local_time(sequel.updated_at, user),
-          CONTENT_SEPARATOR, sequel.content, CONTENT_SEPARATOR
+          '[number] ' + comment.view_number.to_s,
+          '[created at] ' + local_time(comment.created_at, user),
+          '[updated at] ' + local_time(comment.updated_at, user),
+          CONTENT_SEPARATOR, comment.content, CONTENT_SEPARATOR
         ]
       end
-      sequels.present? ? array : array.concat([CONTENT_SEPARATOR])
+      comments.present? ? array : array.concat([CONTENT_SEPARATOR])
     end
 
     def local_time_shorten(time, user)

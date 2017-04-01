@@ -36,11 +36,11 @@ Rails.application.routes.draw do
     put    '/tales/:view_number',      to: 'tales#update'
     delete '/tales/:view_number',      to: 'tales#destroy'
 
-    # sequel
-    post   '/sequels', to: 'sequels#create', as: 'create_sequel'
-    patch  '/sequels', to: 'sequels#update', as: 'update_sequel'
-    put    '/sequels', to: 'sequels#update'
-    delete '/sequels', to: 'sequels#destroy'
+    # comment
+    post   '/comments', to: 'comments#create', as: 'create_comment'
+    patch  '/comments', to: 'comments#update', as: 'update_comment'
+    put    '/comments', to: 'comments#update'
+    delete '/comments', to: 'comments#destroy'
 
     # tag
     get    '/tags',              to: 'tags#index',  as: 'tags'

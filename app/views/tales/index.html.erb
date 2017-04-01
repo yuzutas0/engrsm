@@ -20,9 +20,9 @@
         <%= t('views.time.create', time: local_time(tale.created_at)) %>
       </p>
 
-      <p class="layout__tales__index__list__item__sequels module__badge">
+      <p class="layout__tales__index__list__item__comments module__badge">
         <%= fa_icon 'comment' %>
-        <%= @sequels_attached[tale.id] < 100 ? @sequels_attached[tale.id] : '99+' %>
+        <%= @comments_attached[tale.id] < 100 ? @comments_attached[tale.id] : '99+' %>
       </p>
 
       <span class="layout__tales__index__list__item__pretitle"></span>

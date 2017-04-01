@@ -1,0 +1,37 @@
+<div class="module__modal__outer layout__comments__form__outer" v-show="display">
+  <div class="module__modal__background" v-on:click="closeModal"></div>
+  <div class="module__modal">
+    <div class="module__modal__inner">
+      <div id="script__comment__form__<%= index %>" class="layout__comments__form module__form">
+
+        <ul class="nav nav-tabs">
+          <li class="active"><a id="script__comment__form__<%= index %>__editor__tab__switch"><%= t('.editor') %></a></li>
+          <li><a id="script__comment__form__<%= index %>__preview__tab__switch"><%= t('.preview') %></a></li>
+        </ul>
+
+        <div id="script__comment__form__<%= index %>__editor__tab__content" class="module__form__field">
+          <%= f.text_area :content,
+                          id: "script__comment__form__#{index}__editor",
+                          class: 'layout__comments__form__content module__form__field__text module__form__field__text--fixed',
+                          'v-model' => 'content',
+                          placeholder: t('.placeholder')
+          %>
+        </div>
+
+        <div id="script__comment__form__<%= index %>__preview__tab__content"
+             class="layout__comments__form__preview module__panel hidden"><!-- tab change by JS -->
+          <div v-html="content | preview"
+               id="script__comment__form__<%= index %>__preview"
+               class="module__markdown module__panel__inner">
+          </div>
+        </div>
+
+        <div>
+          <%= hidden_field_tag :view_number, tale.view_number %>
+          <%= f.submit t('.post'), class: 'module__button module__button--small module__button--wide' %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

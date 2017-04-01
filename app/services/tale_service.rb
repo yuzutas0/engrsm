@@ -39,8 +39,8 @@ class TaleService
   # return tale list
   def self.list(user_id, queries)
     tales = search(user_id, queries)
-    sequels_attached = sequels_attached(tales)
-    [tales, sequels_attached]
+    comments_attached = comments_attached(tales)
+    [tales, comments_attached]
   end
 
   # -----------------------------------------------------------------
@@ -106,9 +106,9 @@ class TaleService
       hash.merge(keywords: queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq)
     end
 
-    def sequels_attached(tales)
+    def comments_attached(tales)
       tale_id_list = tales.map(&:id)
-      SequelRepository.tale_id_and_attached_count(tale_id_list)
+      CommentRepository.tale_id_and_attached_count(tale_id_list)
     end
   end
 end

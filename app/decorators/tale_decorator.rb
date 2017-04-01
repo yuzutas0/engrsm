@@ -20,7 +20,7 @@ class TaleDecorator < BaseDecorator
     blank = ['', '']
     active = ['active', 'in active']
     result = [blank, blank, blank]
-    if params[:sequels].present?
+    if params[:comments].present?
       result[2] = active
     elsif params[:information].present?
       result[1] = active

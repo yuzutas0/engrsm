@@ -23,11 +23,11 @@
     </li>
     <li class=<%= @tab_class[2][0] %>>
       <a id="script__tale__detail__tab3" href="#tab__third" data-toggle="tab">
-        <%= t('.sequels') %>
-        <% if @tale.sequels.length > 0 %>
+        <%= t('.comments') %>
+        <% if @tale.comments.length > 0 %>
         <span class="module__badge module__badge--desktop">
           <%= fa_icon 'comment' %>
-          <%= @tale.sequels.length %>
+          <%= @tale.comments.length %>
         </span>
         <% end %>
       </a>
@@ -37,6 +37,6 @@
   <div class="tab-content">
     <%= render 'tales/_detail/content', tab_class: @tab_class, tale: @tale %>
     <%= render 'tales/_detail/information', tab_class: @tab_class, tale: @tale %>
-    <%= render 'tales/_detail/sequels', tab_class: @tab_class, new_sequel: @new_sequel, sequels: @sequels, tale: @tale %>
+    <%= render 'tales/_detail/comments', tab_class: @tab_class, new_comment: @new_comment, comments: @comments, tale: @tale %>
   </div>
 </div>

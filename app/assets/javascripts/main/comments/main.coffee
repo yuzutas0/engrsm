@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  engrsm_sequels_form()
+  engrsm_comments_form()
 
 # execute with RubyGem 'turbolinks'
 $(document).ready(ready)

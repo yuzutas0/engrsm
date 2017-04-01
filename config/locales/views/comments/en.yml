@@ -1,7 +1,7 @@
-# sequels view
+# comments view
 
 en:
-  sequels:
+  comments:
     form:
       editor: 'Editor'
       preview: 'Preview'
@@ -13,4 +13,4 @@ en:
         title: 'Delete'
         confirm: 'Are you sure?'
     new:
-      button: 'New Sequel'
+      button: 'New Comment'

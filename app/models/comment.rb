@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 #
-# Sequel
+# Comment
 #
-class Sequel < ActiveRecord::Base
+class Comment < ActiveRecord::Base
   # -----------------------------------------------------------------
   # relation
   # -----------------------------------------------------------------
@@ -12,8 +12,8 @@ class Sequel < ActiveRecord::Base
   # routing path
   # -----------------------------------------------------------------
   # needs three params with request
-  # user.id, tale.view_number, sequel.view_number
-  # (user.id + tale.view_number => tale.id) + (sequel.view_number) => sequel.id
+  # user.id, tale.view_number, comment.view_number
+  # (user.id + tale.view_number => tale.id) + (comment.view_number) => comment.id
 
   # -----------------------------------------------------------------
   # validation

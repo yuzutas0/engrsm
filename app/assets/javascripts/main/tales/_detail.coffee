@@ -16,7 +16,7 @@
   TAB_QUERIES = [
     TAB_QUERY_PREFIX + 'content' + TAB_QUERY_SUFFIX,
     TAB_QUERY_PREFIX + 'information' + TAB_QUERY_SUFFIX,
-    TAB_QUERY_PREFIX + 'sequels' + TAB_QUERY_SUFFIX
+    TAB_QUERY_PREFIX + 'comments' + TAB_QUERY_SUFFIX
   ]
 
   # check DOM

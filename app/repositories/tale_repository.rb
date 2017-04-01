@@ -23,8 +23,8 @@ class TaleRepository
   # get all records
   def self.all(user_id)
     Tale.where(user_id: user_id)
-        .includes(:sequels, :tags)
-        .merge(Sequel.order('sequels.view_number DESC'))
+        .includes(:comments, :tags)
+        .merge(Comment.order('comments.view_number DESC'))
         .merge(Tag.order('tags.view_number DESC'))
   end
 
@@ -47,7 +47,7 @@ class TaleRepository
   def self.detail_with_options(view_number, user_id)
     Tale.where('view_number = ? AND user_id = ?', view_number, user_id)
         .includes(:tags)
-        .includes(:sequels)
+        .includes(:comments)
         .first
   end
 end

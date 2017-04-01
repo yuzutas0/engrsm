@@ -1,4 +1,4 @@
-// sequels index
+// comments index
 
 // import
 @import "base/const";
@@ -7,18 +7,18 @@
 @import "module/markdown";
 
 // main
-.layout__sequels__index {
+.layout__comments__index {
   @include util__layout;
 
-  .layout__sequels__index__item {
+  .layout__comments__index__item {
 
-    .layout__sequels__index__item__divide {
+    .layout__comments__index__item__divide {
       margin: $margin_size_x_small 0;
     }
 
-    .layout__sequels__index__item__edit,
-    .layout__sequels__index__item__delete,
-    .layout__sequels__index__item__information {
+    .layout__comments__index__item__edit,
+    .layout__comments__index__item__delete,
+    .layout__comments__index__item__information {
       @extend .text-muted;
       font-size: $font_size_small;
     }
