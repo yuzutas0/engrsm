@@ -46,7 +46,6 @@ class TalesController < ApplicationController
     @is_searched, @search_conditions = SearchConditionService.request(current_user, @queries)
     @tales, @sequels_attached = TaleService.list(current_user.id, @queries)
     @tags, @tags_attached = TagService.list(current_user.id)
-    @scores, @scores_attached = ScoreService.list(current_user.id)
     @default_sort_master = SearchForm.sort_master
     @compare_master = SearchForm.compare_master
   end

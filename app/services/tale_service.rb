@@ -96,7 +96,6 @@ class TaleService
       {
         user_id: user_id,
         tags: queries.tags,
-        scores: queries.scores,
         sort: queries.sort,
         page: queries.page
       }

@@ -58,7 +58,7 @@ module TaleFinder
         .includes(:tale_tag_relationships)
     end
 
-    def pre_read(condition, user_id, tags, scores, sort)
+    def pre_read(condition, user_id, tags, sort)
       custom_sort(
         condition_for_tag(
           condition,
