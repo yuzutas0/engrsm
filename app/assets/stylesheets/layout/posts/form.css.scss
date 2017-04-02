@@ -38,7 +38,7 @@
 
     .layout__post__form__suggest {
       &.tt-cursor {
-        @extend .bg-primary;
+        @extend .bg-success;
       }
       .tt-highlight {
         @extend .text-warning;

@@ -6,7 +6,7 @@
 // main
 .module__label {
   @extend .label;
-  @extend .label-primary;
+  @extend .label-success;
   font-weight: normal !important; // cancel bootstrap
   line-height: 2 !important; // cancel bootstrap
 }

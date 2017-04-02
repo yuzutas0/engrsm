@@ -74,7 +74,7 @@
         .layout__home__explain__inner1__content__icon {
           font-size: $icon_size_large;
           padding-right: $margin_size_x_small;
-          color: darken($brand-primary, 20%);
+          color: darken($brand-success, 20%);
 
           @media (max-width: $screen-xs-max) {
             padding-right: 0;

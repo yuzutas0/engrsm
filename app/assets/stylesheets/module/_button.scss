@@ -6,7 +6,7 @@
 // main
 .module__button {
   @extend .btn;
-  @extend .btn-primary;
+  @extend .btn-success;
   white-space: normal !important; // cancel bootstrap
   padding: $margin_size_x_small $margin_size_middle;
 
