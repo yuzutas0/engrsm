@@ -1,0 +1,8 @@
+<% @page_title = t('views.path.name.post.edit') %>
+<div class="layout__post__edit">
+  <p><%= render 'breadcrumb_3_post', forth_page: @page_title, post: @post %></p>
+
+  <%= form_for @post do |f| %>
+    <%= render 'form', f: f, tags: @tags %>
+  <% end %>
+</div>

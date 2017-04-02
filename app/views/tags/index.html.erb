@@ -1,7 +1,7 @@
 <% @page_title = t('views.path.name.tags') %>
 <div class="layout__tags__index">
   <p class="layout__tags__index__header">
-    <%= render 'layouts/breadcrumb_tale_2', third_page: @page_title %>
+    <%= render 'layouts/breadcrumb_post_2', third_page: @page_title %>
   </p>
   <hr>
 
@@ -12,7 +12,7 @@
         <p class="module__label"><%= tag.name %></p>
         <p class="module__list__item__content layout__tags__index__content">
           <% link = link_to t('.link_html', count: @tags_attached[tag.view_number]),
-                            tales_path('tags':{'id':[tag.view_number]}) %>
+                            posts_path('tags':{'id':[tag.view_number]}) %>
           <%= t('.attached_html', link: link) %>
           |
           <a v-on:click="showModal"><%= t('.edit') %></a>

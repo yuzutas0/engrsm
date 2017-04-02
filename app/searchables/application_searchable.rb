@@ -2,7 +2,7 @@
 # searchables/application_searchable.rb
 module ApplicationSearchable
   # called by model
-  INDEX_NAME = "es_engrsm_tale_#{Rails.env}"
+  INDEX_NAME = "es_engrsm_post_#{Rails.env}"
   CLIENT = Elasticsearch::Client.new host: Rails.application.secrets.elastic_search_host
 
   # called by searchable
@@ -52,7 +52,7 @@ module ApplicationSearchable
     def create_index
       # ready
       settings = SETTINGS.to_hash
-      mappings = Tale.mapping.to_hash
+      mappings = Post.mapping.to_hash
 
       # change index
       delete_index(force: true)

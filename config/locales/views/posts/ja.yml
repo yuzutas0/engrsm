@@ -1,0 +1,35 @@
+# posts view
+
+ja:
+  posts:
+    detail:
+      information:
+        delete:
+          title: '削除'
+          confirm: '削除したら戻すことはできません。本当に削除してもよろしいですか？'
+          verify: '確認のために、この投稿のタイトルを入力してください。'
+    search:
+      form:
+        input: '条件を入力'
+        condition: '過去の条件'
+        keyword: 'キーワード'
+        tag: 'タグ'
+        sort: '表示順'
+        save_title: '条件保存 (%{max}件まで保存可能)'
+        save_flag: '保存'
+        save_name: '名前をつける'
+        search: '検索する'
+        saved: '保存条件'
+        history: '検索履歴'
+      header:
+        searched: '検索結果'
+    form:
+      title_placeholder: 'タイトル'
+      tag_placeholder: 'タグ1 タグ2'
+      content_placeholder: 'マークダウンで記入してください'
+      editor: '編集'
+      preview: 'プレビュー'
+    show:
+      content: '投稿内容'
+      information: '情報'
+      comments: 'コメント'

@@ -1,0 +1,24 @@
+<p class="layout__posts__index__header__left">
+  <%= render 'layouts/breadcrumb_post_1' %>
+</p>
+
+<div class="layout__posts__index__header__right">
+  <%= link_to new_post_path, class: 'module__button module__button--small' do %>
+    <%= fa_icon 'pencil' %>
+  <% end %>
+  <%= render 'posts/_search/modal',
+             queries: queries,
+             tags: tags,
+             tags_attached: tags_attached,
+             default_sort_master: default_sort_master,
+             compare_master: compare_master,
+             search_conditions: search_conditions
+  %>
+</div>
+
+<span class="layout__posts__index__header__end"></span>
+<hr>
+
+<% if is_searched %>
+  <div class="layout__posts__index__header__bottom"><p><%= t('.searched') %></p></div>
+<% end %>

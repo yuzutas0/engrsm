@@ -17,8 +17,8 @@ en:
         conditions:
           index: 'SearchConditionList'
           edit: 'Edit Search Condition List'
-        tales: 'MyPage'
-        tale:
-          new: 'NewTale'
-          show: 'YourTale'
-          edit: 'EditTale'
+        posts: 'MyPage'
+        post:
+          new: 'NewPost'
+          show: 'YourPost'
+          edit: 'EditPost'

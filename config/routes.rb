@@ -25,16 +25,16 @@ Rails.application.routes.draw do
                  sessions: 'sessions'
                }
 
-    # tale
-    get    '/mypage',                  to: 'tales#index',  as: 'tales'
-    post   '/tales',                   to: 'tales#create', as: 'create_tale'
-    get    '/tales/new',               to: 'tales#new',    as: 'new_tale'
-    get    '/tales',                   to: 'tales#new'
-    get    '/tales/:view_number/edit', to: 'tales#edit',   as: 'edit_tale'
-    get    '/tales/:view_number',      to: 'tales#show',   as: 'tale'
-    patch  '/tales/:view_number',      to: 'tales#update', as: 'update_tale'
-    put    '/tales/:view_number',      to: 'tales#update'
-    delete '/tales/:view_number',      to: 'tales#destroy'
+    # post
+    get    '/mypage',                  to: 'posts#index',  as: 'posts'
+    post   '/posts',                   to: 'posts#create', as: 'create_post'
+    get    '/posts/new',               to: 'posts#new',    as: 'new_post'
+    get    '/posts',                   to: 'posts#new'
+    get    '/posts/:view_number/edit', to: 'posts#edit',   as: 'edit_post'
+    get    '/posts/:view_number',      to: 'posts#show',   as: 'post'
+    patch  '/posts/:view_number',      to: 'posts#update', as: 'update_post'
+    put    '/posts/:view_number',      to: 'posts#update'
+    delete '/posts/:view_number',      to: 'posts#destroy'
 
     # comment
     post   '/comments', to: 'comments#create', as: 'create_comment'

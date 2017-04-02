@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
   add_index 'tale_tag_relationships', %w(tale_id tag_id), name: 'index_tale_tag_relationships_on_tale_id_and_tag_id', unique: true, using: :btree
   add_index 'tale_tag_relationships', ['tale_id'], name: 'index_tale_tag_relationships_on_tale_id', using: :btree
 
-  create_table 'tales', force: :cascade do |t|
+  create_table 'posts', force: :cascade do |t|
     t.string   'title',       limit: 255, null: false
     t.text     'content',     limit: 65_535, null: false
     t.integer  'view_number', limit: 4, default: 0, null: false
@@ -70,9 +70,9 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
     t.datetime 'updated_at',                            null: false
   end
 
-  add_index 'tales', ['user_id'], name: 'index_tales_on_user_id', using: :btree
-  add_index 'tales', %w(view_number user_id), name: 'index_tales_on_view_number_and_user_id', unique: true, using: :btree
-  add_index 'tales', ['view_number'], name: 'index_tales_on_view_number', using: :btree
+  add_index 'posts', ['user_id'], name: 'index_tales_on_user_id', using: :btree
+  add_index 'posts', %w(view_number user_id), name: 'index_tales_on_view_number_and_user_id', unique: true, using: :btree
+  add_index 'posts', ['view_number'], name: 'index_tales_on_view_number', using: :btree
 
   create_table 'users', force: :cascade do |t|
     t.string   'email',                  limit: 255, default: '', null: false
@@ -99,10 +99,10 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
   add_index 'users', ['email'], name: 'index_users_on_email', unique: true, using: :btree
   add_index 'users', ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
 
-  add_foreign_key 'comments', 'tales'
+  add_foreign_key 'comments', 'posts'
   add_foreign_key 'search_conditions', 'users'
   add_foreign_key 'tags', 'users'
   add_foreign_key 'tale_tag_relationships', 'tags'
-  add_foreign_key 'tale_tag_relationships', 'tales'
-  add_foreign_key 'tales', 'users'
+  add_foreign_key 'tale_tag_relationships', 'posts'
+  add_foreign_key 'posts', 'users'
 end

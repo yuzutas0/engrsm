@@ -18,9 +18,9 @@ class BackupService
   # Facade
   # -----------------------------------------------------------------
   def self.create(user)
-    file_name, temp_file, tales = ready(user)
+    file_name, temp_file, posts = ready(user)
     begin
-      zip_data = make_zip_file(temp_file, tales, user)
+      zip_data = make_zip_file(temp_file, posts, user)
     ensure
       file_delete(temp_file)
     end
@@ -36,38 +36,38 @@ class BackupService
     def ready(user)
       filename = dir_name(user) + ZIP_FILE_NAME_SUFFIX
       temp_file = Tempfile.new(filename)
-      tales = TaleRepository.all(user.id)
-      [filename, temp_file, tales]
+      posts = PostRepository.all(user.id)
+      [filename, temp_file, posts]
     end
 
     def dir_name(user)
       DIR_NAME_PREFIX + '_' + local_time_shorten(Time.now, user)
     end
 
-    def make_zip_file(temp_file, tales, user)
+    def make_zip_file(temp_file, posts, user)
       Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip|
         zip.mkdir(dir_name(user))
-        tales.each do |tale|
-          file_name = tale_file_name(tale, user)
-          zip.get_output_stream(file_name) { |s| tale_file_content(s, tale, user) }
+        posts.each do |post|
+          file_name = post_file_name(post, user)
+          zip.get_output_stream(file_name) { |s| post_file_content(s, post, user) }
         end
       end
       File.read(temp_file.path)
     end
 
-    def tale_file_name(tale, user)
-      dir_name(user) + File::SEPARATOR + tale.view_number.to_s + TEXT_FILE_SUFFIX
+    def post_file_name(post, user)
+      dir_name(user) + File::SEPARATOR + post.view_number.to_s + TEXT_FILE_SUFFIX
     end
 
-    def tale_file_content(s, tale, user)
+    def post_file_content(s, post, user)
       [
-        CONTENT_SEPARATOR, '[title] ' + tale.title, CONTENT_SEPARATOR,
-        '[tag] ' + tale.tags.map(&:name).join(','),
+        CONTENT_SEPARATOR, '[title] ' + post.title, CONTENT_SEPARATOR,
+        '[tag] ' + post.tags.map(&:name).join(','),
         CONTENT_SEPARATOR,
-        '[created at] ' + local_time(tale.created_at, user),
-        '[updated at] ' + local_time(tale.updated_at, user),
-        CONTENT_SEPARATOR, '[content]', CONTENT_SEPARATOR, tale.content
-      ].concat(comment_file_content(tale.comments, user)).each { |i| s.puts(i) }
+        '[created at] ' + local_time(post.created_at, user),
+        '[updated at] ' + local_time(post.updated_at, user),
+        CONTENT_SEPARATOR, '[content]', CONTENT_SEPARATOR, post.content
+      ].concat(comment_file_content(post.comments, user)).each { |i| s.puts(i) }
     end
 
     def comment_file_content(comments, user)

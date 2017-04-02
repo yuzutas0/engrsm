@@ -10,7 +10,7 @@
         <% 3.times { %><span class="layout__shared__header__inner__layout__menu__inner"></span><% } %>
       </button>
       <!-- application logo at left -->
-      <% logo_link = user_signed_in? ? tales_path : root_path %>
+      <% logo_link = user_signed_in? ? posts_path : root_path %>
       <%= link_to logo_link, class: 'layout__shared__header__inner__layout__logo' do %>
           <h1 class="layout__shared__header__inner__layout__logo__inner">
             <%= fa_icon('address-book-o') + ' ' + Constants::PRODUCT_NAME_FOR_HEADER %>
@@ -23,7 +23,7 @@
       <% # .collapse の直指定 : パフォーマンス観点 %>
       <ul class="layout__shared__header__inner__menu__list">
         <% if user_signed_in? %>
-          <% [(link_to fa_icon('list') + ' ' + t('views.path.name.tales'), tales_path),
+          <% [(link_to fa_icon('list') + ' ' + t('views.path.name.posts'), posts_path),
               (link_to fa_icon('tags') + ' ' + t('views.path.name.tags'), tags_path),
               (link_to fa_icon('user') + ' ' + t('views.path.name.account'), edit_user_registration_path),
               (link_to fa_icon('sign-out') + ' ' + t('.logout'), destroy_user_session_path, method: :delete)

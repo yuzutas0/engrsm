@@ -5,12 +5,12 @@ class CommentService
   # Create
   # -----------------------------------------------------------------
 
-  def self.create(params, tale_view_number, user_id)
+  def self.create(params, post_view_number, user_id)
     Comment.transaction do
-      tale = TaleRepository.detail(tale_view_number, user_id)
-      comment = CommentFactory.instance(params, tale)
+      post = PostRepository.detail(post_view_number, user_id)
+      comment = CommentFactory.instance(params, post)
       success = comment.save
-      return tale, comment, success
+      return post, comment, success
     end
   end
 
@@ -18,8 +18,8 @@ class CommentService
   # Read - detail
   # -----------------------------------------------------------------
 
-  def self.detail(user_id, tale_view_number, comment_view_number)
-    TaleRepository.detail(tale_view_number, user_id)
+  def self.detail(user_id, post_view_number, comment_view_number)
+    PostRepository.detail(post_view_number, user_id)
                   .comments
                   .find_by(view_number: comment_view_number)
   end

@@ -13,13 +13,13 @@ class CommentsController < ApplicationController
   # -----------------------------------------------------------------
   # POST /comments
   def create
-    @tale, @comment, success = CommentService.create(comment_params, params[:view_number], current_user.id)
+    @post, @comment, success = CommentService.create(comment_params, params[:view_number], current_user.id)
     if success
       flash[:notice] = t('views.message.create.success')
     else
       flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/tales/#{params[:view_number]}?comments=created"
+    redirect_to "/posts/#{params[:view_number]}?comments=created"
   end
 
   # -----------------------------------------------------------------
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/tales/#{params[:view_number]}?comments=updated"
+    redirect_to "/posts/#{params[:view_number]}?comments=updated"
   end
 
   # -----------------------------------------------------------------
@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/tales/#{params[:view_number]}?comments=deleted"
+    redirect_to "/posts/#{params[:view_number]}?comments=deleted"
   end
 
   # -----------------------------------------------------------------

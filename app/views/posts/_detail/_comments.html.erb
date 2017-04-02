@@ -1,0 +1,5 @@
+<div id="tab__third" class="tab-pane fade <%= tab_class[2][1] %>"> <!-- tab -->
+  <%= render 'comments/new', new_comment: new_comment, post: post %>
+  <%= render 'comments/index', post: post %>
+  <%= t('views.message.blank.comment') if post.comments.blank? %>
+</div>

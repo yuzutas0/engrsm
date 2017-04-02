@@ -29,8 +29,8 @@ module ApplicationHelper
 
   def ignore_params_list
     params = [:controller, :action, :locale, # common
-              :view_number,                  # tale, comment
-              :save, :name] # search tales
+              :view_number,                  # post, comment
+              :save, :name] # search posts
     Hash[*[params, Array.new(params.size)].transpose.flatten]
   end
 

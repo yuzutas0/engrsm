@@ -9,7 +9,7 @@
       <% if condition.name.present? %>
         <p><%= condition.name %></p>
       <% end %>
-      <p><a href="<%= tales_path + '?' + condition.query_string %>"><%= '?' + condition.query_string %></a></p>
+      <p><a href="<%= posts_path + '?' + condition.query_string %>"><%= '?' + condition.query_string %></a></p>
       <p class="module__list__item__content">
         <%= local_time(condition.updated_at) %>
         |

@@ -1,0 +1,64 @@
+<% @page_title = t('views.path.name.posts') %>
+<div class="layout__posts__index">
+
+  <%= render 'posts/_search/header',
+             queries: @queries,
+             is_searched: @is_searched,
+             tags: @tags,
+             tags_attached: @tags_attached,
+             default_sort_master: @default_sort_master,
+             compare_master: @compare_master,
+             search_conditions: @search_conditions %>
+
+  <p><%= page_entries_info @posts %></p>
+  <div class="module__list">
+
+    <% @posts.each do |post| %>
+    <div class="module__list__item">
+
+      <p class="layout__posts__index__list__item__created">
+        <%= t('views.time.create', time: local_time(post.created_at)) %>
+      </p>
+
+      <p class="layout__posts__index__list__item__comments module__badge">
+        <%= fa_icon 'comment' %>
+        <%= @comments_attached[post.id] < 100 ? @comments_attached[post.id] : '99+' %>
+      </p>
+
+      <span class="layout__posts__index__list__item__pretitle"></span>
+
+      <h4>
+        <%= link_to post, class: 'module__list__item__title' do %>
+          <% if post.title.size > 30 %>
+                <%= post.title[0..29] + '...' %>
+            <% else %>
+                <%= post.title %>
+            <% end %>
+        <% end %>
+      </h4>
+
+      <div>
+        <% post.post_tag_relationships.each do |relation| %>
+          <% tag = (@tags.select { |tag| tag.id == relation.tag_id }).first %>
+          <% path = posts_path('tags':{'id':[tag.view_number]}) %>
+          <%= link_to path, class: 'module__label layout__posts__index__list__item__tags' do %>
+            <%= fa_icon('tag') + ' ' + tag.name %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <p class="layout__posts__index__list__item__content module__list__item__content">
+        <% post_content_plain = markdown_to_plain(post.content) %>
+        <% if post_content_plain.size > 99 %>
+            <%= post_content_plain[0..99] %>...
+        <% else %>
+            <%= post_content_plain %>
+        <% end %>
+      </p>
+
+    </div>
+    <% end %>
+  </div>
+
+  <div class="layout__posts__index__pagination"><%= paginate @posts, outer_window: 3 %></div>
+</div>

@@ -1,0 +1,50 @@
+// post show
+
+// import
+@import "base/const";
+@import "base/util";
+@import "module/badge";
+@import "module/label";
+@import "module/markdown";
+
+// main
+.layout__post__show {
+  @extend .container;
+  @include util__layout;
+
+  .layout__post__show__header {
+
+    .layout__post__show__header__left {
+      @extend .pull-left;
+      margin-top: $margin_size_xx_small; // align height -> right button
+    }
+
+    .layout__posts__show__header__right {
+      @extend .pull-right;
+    }
+
+    .layout__post__show__header__end {
+      @extend .clearfix;
+    }
+  }
+
+  .layout__post__show__information {
+    @extend .list-group;
+
+    .layout__post__show__information__label,
+    .layout__post__show__information__time {
+      @extend .list-group-item;
+    }
+
+    .layout__post__show__information__label__heading,
+    .layout__post__show__information__time__heading {
+      @extend .list-group-item-heading;
+    }
+
+    .layout__post__show__information__time__content {
+      @extend .list-group-item-text;
+      @extend .text-muted;
+      font-size: $font_size_small;
+    }
+  }
+}

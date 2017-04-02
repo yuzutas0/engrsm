@@ -4,7 +4,7 @@ class SearchConditionService
   # -----------------------------------------------------------------
   # Create, Read, Update, Delete
   # -----------------------------------------------------------------
-  # called by TaleService#list
+  # called by PostService#list
   def self.request(user, search_form)
     # param
     save_flag, name, query_string = params_from_form(search_form)

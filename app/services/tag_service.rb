@@ -6,10 +6,10 @@ class TagService
   # -----------------------------------------------------------------
 
   # *** use transaction ***
-  # change tags and relation between tale and tags
-  def self.change_tags(tale_id, tags, user)
+  # change tags and relation between post and tags
+  def self.change_tags(post_id, tags, user)
     TagFactory.create_only_new_name(user, tags)
-    TaleTagRelationshipService.update(tale_id, tags)
+    PostTagRelationshipService.update(post_id, tags)
   end
 
   # -----------------------------------------------------------------
@@ -19,14 +19,14 @@ class TagService
   # called by TagsController#update
   # one request can update only one column
   def self.update(tag, params)
-    TagRepository.update(tag, TaleForm.escape(params[:name]))
+    TagRepository.update(tag, PostForm.escape(params[:name]))
   end
 
   # -----------------------------------------------------------------
   # Read
   # -----------------------------------------------------------------
 
-  # called TagsController#index, TalesController#index
+  # called TagsController#index, PostsController#index
   # [tags, tags_attached]
   def self.list(user_id)
     tags = TagRepository.list(user_id)
@@ -39,7 +39,7 @@ class TagService
     TagRepository.detail(user_id, view_number)
   end
 
-  # called by TaleController#ready_form to show suggestion
+  # called by PostController#ready_form to show suggestion
   def self.name_and_attached_count(user_id)
     TagRepository.name_and_attached_count(user_id)
   end

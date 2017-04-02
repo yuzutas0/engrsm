@@ -1,0 +1,10 @@
+// post new
+
+// import
+@import "base/util";
+
+// main
+.layout__post__new {
+  @extend .container;
+  @include util__layout;
+}

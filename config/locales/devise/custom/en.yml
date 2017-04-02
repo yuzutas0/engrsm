@@ -47,7 +47,7 @@ en:
         current_info: '* We need your current password to confirm your changes.'
         update: 'Update your account info'
         backup: 'Download Backup file'
-        backup_info: '* There are tales, tags, and comments you posted in backup file.'
+        backup_info: '* There are posts, tags, and comments you posted in backup file.'
         delete: 'Delete Account (Resign from this app)'
         delete_title: 'Verify the deletion'
         delete_confirm_html: 'Are you absolutely sure you want to delete your account <strong>%{name}</strong>?'

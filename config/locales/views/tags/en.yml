@@ -4,7 +4,7 @@ en:
   tags:
     index:
       attached_html: 'is attached to %{link}'
-      link_html: '%{count} tales'
+      link_html: '%{count} posts'
       edit: 'Edit'
       delete:
         title: 'Delete'

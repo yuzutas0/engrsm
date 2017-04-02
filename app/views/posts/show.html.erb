@@ -1,0 +1,42 @@
+<% @page_title = t('views.path.name.post.show') %>
+<div class="layout__post__show">
+
+  <div class="layout__post__show__header">
+    <p class="layout__post__show__header__left">
+      <%= render 'layouts/breadcrumb_post_2', third_page: @page_title%>
+    </p>
+    <%= link_to edit_post_path(@post),
+                class: 'layout__posts__show__header__right module__button module__button--small' do %>
+      <%= fa_icon 'pencil' %>
+    <% end %>
+    <div class="layout__post__show__header__end"></div>
+  </div>
+  <hr>
+
+  <h2><%= @post.title %></h2>
+  <ul id="script__post__detail" class="module__tab">
+    <li class=<%= @tab_class[0][0] %>>
+      <a id="script__post__detail__tab1" href="#tab__first" data-toggle="tab"><%= t('.content') %></a>
+    </li>
+    <li class=<%= @tab_class[1][0] %>>
+      <a id="script__post__detail__tab2" href="#tab__second" data-toggle="tab"><%= t('.information') %></a>
+    </li>
+    <li class=<%= @tab_class[2][0] %>>
+      <a id="script__post__detail__tab3" href="#tab__third" data-toggle="tab">
+        <%= t('.comments') %>
+        <% if @post.comments.length > 0 %>
+        <span class="module__badge module__badge--desktop">
+          <%= fa_icon 'comment' %>
+          <%= @post.comments.length %>
+        </span>
+        <% end %>
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <%= render 'posts/_detail/content', tab_class: @tab_class, post: @post %>
+    <%= render 'posts/_detail/information', tab_class: @tab_class, post: @post %>
+    <%= render 'posts/_detail/comments', tab_class: @tab_class, new_comment: @new_comment, comments: @comments, post: @post %>
+  </div>
+</div>

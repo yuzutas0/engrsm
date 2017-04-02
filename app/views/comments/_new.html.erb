@@ -2,7 +2,7 @@
 
   <div v-cloak>
     <%= form_for(new_comment, url: create_comment_path) do |f| %>
-        <%= render 'comments/form', f: f, index: 0, tale: tale %>
+        <%= render 'comments/form', f: f, index: 0, post: post %>
     <% end %>
   </div>
 
