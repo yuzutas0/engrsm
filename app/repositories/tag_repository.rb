@@ -5,9 +5,9 @@ class TagRepository
   # Read
   # -----------------------------------------------------------------
 
-  # SELECT * FROM tags WHERE user_id = #{user_id}
-  def self.list(user_id)
-    Tag.where('user_id = ?', user_id) || []
+  # SELECT * FROM tags
+  def self.list
+    Tag.all || []
   end
 
   # SELECT * FROM tags WHERE id = #{id}

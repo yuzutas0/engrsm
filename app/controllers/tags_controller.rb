@@ -13,7 +13,7 @@ class TagsController < ApplicationController
   # -----------------------------------------------------------------
   # GET /tags
   def index
-    @tags, @tags_attached = TagService.list(current_user.id)
+    @tags, @tags_attached = TagService.list
   end
 
   # -----------------------------------------------------------------

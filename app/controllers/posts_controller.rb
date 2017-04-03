@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   def new
     redirect_to posts_path, alert: t('views.message.validate.limit') unless PostService.validate(current_user.id)
     @post = PostService.new
-    ready_form(@post, current_user.id)
+    ready_form(@post)
   end
 
   # POST /posts
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
       redirect_to @post, notice: t('views.message.create.success')
     else
       flash.now[:alert] = PostDecorator.flash(@post, flash)
-      ready_form(@post, current_user.id, tags_params_string)
+      ready_form(@post, tags_params_string)
       render :new
     end
   end
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     @queries = SearchForm.new(params, request.fullpath)
     @is_searched, @search_conditions = SearchConditionService.request(current_user, @queries)
     @posts, @comments_attached = PostService.list(current_user.id, @queries)
-    @tags, @tags_attached = TagService.list(current_user.id)
+    @tags, @tags_attached = TagService.list
     @default_sort_master = SearchForm.sort_master
     @compare_master = SearchForm.compare_master
   end
@@ -61,17 +61,17 @@ class PostsController < ApplicationController
   # -----------------------------------------------------------------
   # GET /posts/1/edit
   def edit
-    ready_form(@post, current_user.id)
+    ready_form(@post)
   end
 
   # PATCH/PUT /posts/1
   def update
-    @post, success = PostService.update(@post, post_params, option_form_params, current_user)
+    @post, success = PostService.update(@post, post_params, option_form_params)
     if success
       redirect_to @post, notice: t('views.message.update.success')
     else
       flash.now[:alert] = PostDecorator.flash(@post, flash)
-      ready_form(@post, current_user.id, tags_params_string)
+      ready_form(@post, tags_params_string)
       render :edit
     end
   end
@@ -105,9 +105,9 @@ class PostsController < ApplicationController
   end
 
   # set some params for post form
-  def ready_form(post, user_id, showing_tags = '')
+  def ready_form(post, showing_tags = '')
     @form = PostDecorator.option_form(post, showing_tags)
-    @tags = TagService.name_and_attached_count(user_id)
+    @tags = TagService.name_and_attached_count
   end
 
   # -----------------------------------------------------------------

@@ -27,7 +27,7 @@ class PostService
     Post.transaction do
       post = PostFactory.instance(params, user)
       success = post.save
-      change_records(post, option_form, user, success)
+      change_records(post, option_form, success)
       return post, success
     end
   end
@@ -57,10 +57,10 @@ class PostService
   # -----------------------------------------------------------------
   # Update
   # -----------------------------------------------------------------
-  def self.update(post, post_params, option_form, user)
+  def self.update(post, post_params, option_form)
     Post.transaction do
       success = post.update(post_params)
-      change_records(post, option_form, user, success)
+      change_records(post, option_form, success)
       return post, success
     end
   end
@@ -74,9 +74,9 @@ class PostService
     # -----------------------------------------------------------------
     # Create, Update
     # -----------------------------------------------------------------
-    def change_records(post, option_form, user, success)
+    def change_records(post, option_form, success)
       return unless success
-      TagService.change_tags(post.id, option_form.tags, user)
+      TagService.change_tags(post.id, option_form.tags)
     end
 
     # -----------------------------------------------------------------

@@ -7,8 +7,8 @@ class TagService
 
   # *** use transaction ***
   # change tags and relation between post and tags
-  def self.change_tags(post_id, tags, user)
-    TagFactory.create_only_new_name(user, tags)
+  def self.change_tags(post_id, tags)
+    TagFactory.create_only_new_name(tags)
     PostTagRelationshipService.update(post_id, tags)
   end
 
@@ -40,7 +40,7 @@ class TagService
   end
 
   # called by PostController#ready_form to show suggestion
-  def self.name_and_attached_count(user_id)
-    TagRepository.name_and_attached_count(user_id)
+  def self.name_and_attached_count
+    TagRepository.name_and_attached_count
   end
 end
