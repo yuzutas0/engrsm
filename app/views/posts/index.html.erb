@@ -40,7 +40,7 @@
       <div>
         <% post.post_tag_relationships.each do |relation| %>
           <% tag = (@tags.select { |tag| tag.id == relation.tag_id }).first %>
-          <% path = posts_path('tags':{'id':[tag.view_number]}) %>
+          <% path = posts_path('tags':{'id':[tag.id]}) %>
           <%= link_to path, class: 'module__label layout__posts__index__list__item__tags' do %>
             <%= fa_icon('tag') + ' ' + tag.name %>
           <% end %>

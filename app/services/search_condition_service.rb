@@ -28,8 +28,8 @@ class SearchConditionService
     SearchConditionRepository.list(user_id)
   end
 
-  def self.detail(user_id, view_number)
-    SearchConditionRepository.detail(user_id, view_number)
+  def self.detail(user_id, id)
+    SearchConditionRepository.detail(user_id, id)
   end
 
   # -----------------------------------------------------------------

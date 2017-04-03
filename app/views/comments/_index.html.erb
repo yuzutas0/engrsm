@@ -5,7 +5,6 @@
 
         <div v-cloak>
           <%= form_for(comment, url: update_comment_path) do |f| %>
-              <%= hidden_field_tag :comment_view_number, comment.view_number %>
               <%= render 'comments/form', f: f, index: index, post: post %>
           <% end %>
         </div>
@@ -19,7 +18,7 @@
         <a v-on:click="showModal" class="layout__comments__index__item__edit"><%= t('.edit') %></a>
 
         <%= link_to t('.delete.title'),
-                    comments_path(comment_view_number: comment.view_number, view_number: post.view_number),
+                    comments_path(id: comment.id),
                     method: :delete,
                     data: { confirm: t('.delete.confirm') },
                     title: t('.delete.title'),

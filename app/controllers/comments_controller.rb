@@ -13,13 +13,13 @@ class CommentsController < ApplicationController
   # -----------------------------------------------------------------
   # POST /comments
   def create
-    @post, @comment, success = CommentService.create(comment_params, params[:view_number], current_user.id)
+    @post, @comment, success = CommentService.create(comment_params, current_user.id)
     if success
       flash[:notice] = t('views.message.create.success')
     else
       flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/posts/#{params[:view_number]}?comments=created"
+    redirect_to "/posts/#{@post.id}?comments=created"
   end
 
   # -----------------------------------------------------------------
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/posts/#{params[:view_number]}?comments=updated"
+    redirect_to "/posts/#{@comment.id}?comments=updated"
   end
 
   # -----------------------------------------------------------------
@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/posts/#{params[:view_number]}?comments=deleted"
+    redirect_to "/posts/#{@comment.id}?comments=deleted"
   end
 
   # -----------------------------------------------------------------
@@ -55,7 +55,7 @@ class CommentsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_comment
-    @comment = CommentService.detail(current_user.id, params[:view_number], params[:comment_view_number])
+    @comment = CommentService.detail(current_user.id, params[:id])
     routing_error if @comment.blank?
   end
 

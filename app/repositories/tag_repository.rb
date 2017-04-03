@@ -10,19 +10,18 @@ class TagRepository
     Tag.where('user_id = ?', user_id) || []
   end
 
-  # SELECT * FROM tags WHERE user_id = #{user_id} AND view_number = #{view_number}
-  def self.detail(user_id, view_number)
-    Tag.where('user_id = ? AND view_number = ?', user_id, view_number).first
+  # SELECT * FROM tags WHERE id = #{id}
+  def self.detail(tag_id)
+    Tag.where('id = ?', tag_id).first
   end
 
-  # get hash about tag's view_number and how many posts the tag is attached to
-  # => { view_number: size, ... }
+  # get hash about tag's id and how many posts the tag is attached to
   # => e.g. { 1: 21, 2: 15, 3: 23 }
-  def self.view_number_and_attached_count(user_id)
+  def self.id_and_attached_count
     # query
     query = <<-'SQL'
       SELECT
-        T.view_number,
+        T.id,
         COUNT(R.id)
       FROM
         tags T
@@ -30,20 +29,17 @@ class TagRepository
         post_tag_relationships R
       ON
         T.id = R.tag_id
-      WHERE
-        T.user_id = ?
       GROUP BY
         T.id
     SQL
-
     # execute
-    CommonRepository.select_hash_with_user_id(user_id, query)
+    CommonRepository.select_hash(query)
   end
 
   # get hash about tag's name and how many posts the tag is attached to
   # => { name: size, ... }
   # => e.g. { 'testOne': 21, 'test2': 15, 'test_three': 23 }
-  def self.name_and_attached_count(user_id)
+  def self.name_and_attached_count
     # query
     query = <<-'SQL'
       SELECT
@@ -55,14 +51,11 @@ class TagRepository
         post_tag_relationships R
       ON
         T.id = R.tag_id
-      WHERE
-        T.user_id = ?
       GROUP BY
         T.id
     SQL
-
     # execute
-    CommonRepository.select_hash_with_user_id(user_id, query)
+    CommonRepository.select_hash(query)
   end
 
   # -----------------------------------------------------------------

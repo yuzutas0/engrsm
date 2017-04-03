@@ -11,8 +11,8 @@
       <div id="script__tag__<%= index %>" class="module__list__item">
         <p class="module__label"><%= tag.name %></p>
         <p class="module__list__item__content layout__tags__index__content">
-          <% link = link_to t('.link_html', count: @tags_attached[tag.view_number]),
-                            posts_path('tags':{'id':[tag.view_number]}) %>
+          <% link = link_to t('.link_html', count: @tags_attached[tag.id]),
+                            posts_path('tags':{'id':[tag.id]}) %>
           <%= t('.attached_html', link: link) %>
           |
           <a v-on:click="showModal"><%= t('.edit') %></a>
@@ -34,7 +34,6 @@
                   <div class="module__form__field">
                     <%= f.text_field :name, class: 'module__form__field__text module__form__field__text--fixed' %>
                   </div>
-                  <%= f.hidden_field :view_number %>
                   <%= f.submit t('.update'), class: 'module__button module__button--small' %>
               <% end %>
               </div>

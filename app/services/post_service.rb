@@ -46,12 +46,12 @@ class PostService
   # -----------------------------------------------------------------
   # Read - detail
   # -----------------------------------------------------------------
-  def self.detail(view_number, user_id)
-    PostRepository.detail(view_number, user_id)
+  def self.detail(id, user_id)
+    PostRepository.detail(id, user_id)
   end
 
-  def self.detail_with_options(view_number, user_id)
-    PostRepository.detail_with_options(view_number, user_id)
+  def self.detail_with_options(id, user_id)
+    PostRepository.detail_with_options(id, user_id)
   end
 
   # -----------------------------------------------------------------

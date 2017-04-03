@@ -19,7 +19,7 @@ class TagsController < ApplicationController
   # -----------------------------------------------------------------
   # endpoint - update
   # -----------------------------------------------------------------
-  # PATCH /tags/:view_number
+  # PATCH /tags/:id
   def update
     if TagService.update(@tag, tag_params)
       flash[:notice] = t('views.message.update.success')
@@ -32,7 +32,7 @@ class TagsController < ApplicationController
   # -----------------------------------------------------------------
   # endpoint - delete
   # -----------------------------------------------------------------
-  # DELETE /tags/:view_number
+  # DELETE /tags/:id
   def destroy
     if @tag.destroy
       flash[:notice] = t('views.message.destroy.success')
@@ -49,12 +49,12 @@ class TagsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_tag
-    @tag = TagService.detail(current_user.id, params[:view_number])
+    @tag = TagService.detail(current_user.id, params[:id])
     routing_error if @tag.blank?
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def tag_params
-    params.require(:tag).permit(:name, :view_number)
+    params.require(:tag).permit(:name, :id)
   end
 end

@@ -14,16 +14,13 @@
 
 ActiveRecord::Schema.define(version: 20_170_205_080_455) do
   create_table 'comments', force: :cascade do |t|
-    t.text     'content',     limit: 65_535
-    t.integer  'view_number', limit: 4, default: 0, null: false
-    t.integer  'post_id',     limit: 4
-    t.datetime 'created_at',                            null: false
-    t.datetime 'updated_at',                            null: false
+    t.text     'content',    limit: 65_535
+    t.integer  'post_id',    limit: 4
+    t.datetime 'created_at',               null: false
+    t.datetime 'updated_at',               null: false
   end
 
   add_index 'comments', ['post_id'], name: 'index_comments_on_post_id', using: :btree
-  add_index 'comments', %w(view_number post_id), name: 'index_comments_on_view_number_and_post_id', unique: true, using: :btree
-  add_index 'comments', ['view_number'], name: 'index_comments_on_view_number', using: :btree
 
   create_table 'post_tag_relationships', force: :cascade do |t|
     t.integer 'post_id', limit: 4, null: false
@@ -35,44 +32,31 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
   add_index 'post_tag_relationships', ['tag_id'], name: 'index_post_tag_relationships_on_tag_id', using: :btree
 
   create_table 'posts', force: :cascade do |t|
-    t.string   'title',       limit: 255, null: false
-    t.text     'content',     limit: 65_535, null: false
-    t.integer  'view_number', limit: 4, default: 0, null: false
-    t.integer  'user_id',     limit: 4,                 null: false
-    t.datetime 'created_at',                            null: false
-    t.datetime 'updated_at',                            null: false
+    t.string   'title',      limit: 255,   null: false
+    t.text     'content',    limit: 65_535, null: false
+    t.integer  'user_id',    limit: 4,     null: false
+    t.datetime 'created_at',               null: false
+    t.datetime 'updated_at',               null: false
   end
 
   add_index 'posts', ['user_id'], name: 'index_posts_on_user_id', using: :btree
-  add_index 'posts', %w(view_number user_id), name: 'index_posts_on_view_number_and_user_id', unique: true, using: :btree
-  add_index 'posts', ['view_number'], name: 'index_posts_on_view_number', using: :btree
 
   create_table 'search_conditions', force: :cascade do |t|
     t.string   'name',         limit: 255
     t.text     'query_string', limit: 65_535, null: false
-    t.boolean  'save_flag',                  default: false, null: false
-    t.integer  'view_number',  limit: 4,     default: 0,     null: false
-    t.integer  'user_id',      limit: 4,                     null: false
+    t.boolean  'save_flag', default: false, null: false
+    t.integer  'user_id', limit: 4, null: false
     t.datetime 'created_at',                                 null: false
     t.datetime 'updated_at',                                 null: false
   end
 
   add_index 'search_conditions', ['user_id'], name: 'index_search_conditions_on_user_id', using: :btree
-  add_index 'search_conditions', %w(view_number user_id), name: 'index_search_conditions_on_view_number_and_user_id', unique: true, using: :btree
-  add_index 'search_conditions', ['view_number'], name: 'index_search_conditions_on_view_number', using: :btree
 
   create_table 'tags', force: :cascade do |t|
-    t.string   'name',        limit: 255
-    t.integer  'view_number', limit: 4, default: 0, null: false
-    t.integer  'user_id',     limit: 4,               null: false
-    t.datetime 'created_at',                          null: false
-    t.datetime 'updated_at',                          null: false
+    t.string   'name', limit: 255
+    t.datetime 'created_at',             null: false
+    t.datetime 'updated_at',             null: false
   end
-
-  add_index 'tags', %w(name user_id), name: 'index_tags_on_name_and_user_id', unique: true, using: :btree
-  add_index 'tags', ['user_id'], name: 'index_tags_on_user_id', using: :btree
-  add_index 'tags', %w(view_number user_id), name: 'index_tags_on_view_number_and_user_id', unique: true, using: :btree
-  add_index 'tags', ['view_number'], name: 'index_tags_on_view_number', using: :btree
 
   create_table 'users', force: :cascade do |t|
     t.string   'email',                  limit: 255, default: '', null: false
@@ -104,5 +88,4 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
   add_foreign_key 'post_tag_relationships', 'tags'
   add_foreign_key 'posts', 'users'
   add_foreign_key 'search_conditions', 'users'
-  add_foreign_key 'tags', 'users'
 end

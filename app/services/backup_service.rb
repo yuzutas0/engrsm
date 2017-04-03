@@ -56,7 +56,7 @@ class BackupService
     end
 
     def post_file_name(post, user)
-      dir_name(user) + File::SEPARATOR + post.view_number.to_s + TEXT_FILE_SUFFIX
+      dir_name(user) + File::SEPARATOR + post.id.to_s + TEXT_FILE_SUFFIX
     end
 
     def post_file_content(s, post, user)
@@ -74,7 +74,7 @@ class BackupService
       array = [CONTENT_SEPARATOR, '[comment]', CONTENT_SEPARATOR]
       comments.each do |comment|
         array << [
-          '[number] ' + comment.view_number.to_s,
+          '[id] ' + comment.id.to_s,
           '[created at] ' + local_time(comment.created_at, user),
           '[updated at] ' + local_time(comment.updated_at, user),
           CONTENT_SEPARATOR, comment.content, CONTENT_SEPARATOR

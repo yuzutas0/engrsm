@@ -28,15 +28,15 @@ class TagService
 
   # called TagsController#index, PostsController#index
   # [tags, tags_attached]
-  def self.list(user_id)
-    tags = TagRepository.list(user_id)
-    tags_attached = TagRepository.view_number_and_attached_count(user_id)
+  def self.list
+    tags = TagRepository.list
+    tags_attached = TagRepository.id_and_attached_count
     [tags, tags_attached]
   end
 
   # called by TagsController#set_tag to throw query about tag
-  def self.detail(user_id, view_number)
-    TagRepository.detail(user_id, view_number)
+  def self.detail(id)
+    TagRepository.detail(id)
   end
 
   # called by PostController#ready_form to show suggestion

@@ -11,27 +11,8 @@ class Tag < ActiveRecord::Base
   has_many :posts, through: :post_tag_relationships
 
   # -----------------------------------------------------------------
-  # routing path (tags/:id => tags/:view_number)
-  # -----------------------------------------------------------------
-  # needs two params with request
-  # user.id, tag.view_number
-  # (user.id + tag.view_number => tag.id)
-  def to_param
-    view_number.to_s
-  end
-
-  # -----------------------------------------------------------------
   # validation
   # -----------------------------------------------------------------
-  validates :name,
-            presence: true,
-            length: { minimum: 1, maximum: 100 }
-
-  validates :view_number,
-            presence: true,
-            uniqueness: { scope: [:user_id] },
-            numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
-  validates :user,
-            presence: true
+  validates :name, presence: true, length: { minimum: 1, maximum: 100 }
+  validates :user, presence: true
 end

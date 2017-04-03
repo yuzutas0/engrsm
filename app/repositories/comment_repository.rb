@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 # comment_repository
 class CommentRepository
+  def self.detail(id, user_id)
+    Comment.where('id = ? AND user_id = ?', id, user_id)
+  end
+
   # get hash about post_id and how many comments is posted to the post
   # => { post_id: size, ... }
   # => e.g. { 1: 15, 2: 0, 3: 4 }

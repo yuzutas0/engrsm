@@ -8,8 +8,8 @@ class SearchConditionRepository
     SearchCondition.where(user_id: user_id).order(updated_at: :desc)
   end
 
-  def self.detail(user_id, view_number)
-    SearchCondition.where(user_id: user_id, view_number: view_number).first
+  def self.detail(user_id, id)
+    SearchCondition.where(user_id: user_id, id: id).first
   end
 
   # -----------------------------------------------------------------

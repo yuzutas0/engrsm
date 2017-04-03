@@ -17,14 +17,14 @@
       <div class="module__form__checkbox">
         <%= t('views.message.blank.tag') if tags.blank? %>
         <% tags.each do |tag| %>
-          <% next unless tags_attached[tag.view_number] > 0 %>
-          <% id = "input_tags_#{tag.view_number}" %>
-          <% checked = queries.tags.include?(tag.view_number) %>
-          <%= check_box_tag 'tags[id][]', tag.view_number, checked, id: id %>
+          <% next unless tags_attached[tag.id] > 0 %>
+          <% id = "input_tags_#{tag.id}" %>
+          <% checked = queries.tags.include?(tag.id) %>
+          <%= check_box_tag 'tags[id][]', tag.id, checked, id: id %>
           <%= label_tag id, class: 'module__form__checkbox__label' do %>
             <p class="module__form__checkbox__label__inner">
               <%= tag.name %>
-              <span class="module__badge"><%= tags_attached[tag.view_number] %></span>
+              <span class="module__badge"><%= tags_attached[tag.id] %></span>
             </p>
           <% end %>
         <% end %>

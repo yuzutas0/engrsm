@@ -24,8 +24,8 @@ class PostRepository
   def self.all(user_id)
     Post.where(user_id: user_id)
         .includes(:comments, :tags)
-        .merge(Comment.order('comments.view_number DESC'))
-        .merge(Tag.order('tags.view_number DESC'))
+        .merge(Comment.order('comments.created_at DESC'))
+        .merge(Tag.order('tags.id DESC'))
   end
 
   # count records
@@ -38,14 +38,13 @@ class PostRepository
   # -----------------------------------------------------------------
 
   # without options
-  def self.detail(view_number, user_id)
-    Post.where('view_number = ? AND user_id = ?', view_number, user_id)
-        .first
+  def self.detail(id, user_id)
+    Post.where('id = ? AND user_id = ?', id, user_id).first
   end
 
   # with options
-  def self.detail_with_options(view_number, user_id)
-    Post.where('view_number = ? AND user_id = ?', view_number, user_id)
+  def self.detail_with_options(id, user_id)
+    Post.where('id = ? AND user_id = ?', id, user_id)
         .includes(:tags)
         .includes(:comments)
         .first

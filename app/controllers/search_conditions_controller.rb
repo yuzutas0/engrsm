@@ -19,7 +19,7 @@ class SearchConditionsController < ApplicationController
   # -----------------------------------------------------------------
   # endpoint - update
   # -----------------------------------------------------------------
-  # PATCH /searches/:view_number
+  # PATCH /searches/:id
   def update
     if @search_condition.update(search_condition_params)
       flash[:notice] = t('views.message.update.success')
@@ -32,7 +32,7 @@ class SearchConditionsController < ApplicationController
   # -----------------------------------------------------------------
   # endpoint - delete
   # -----------------------------------------------------------------
-  # DELETE /searches/:view_number
+  # DELETE /searches/:id
   def destroy
     if @search_condition.destroy
       flash[:notice] = t('views.message.destroy.success')
@@ -49,12 +49,12 @@ class SearchConditionsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_search_condition
-    @search_condition = SearchConditionService.detail(current_user.id, params[:view_number])
+    @search_condition = SearchConditionService.detail(current_user.id, params[:id])
     routing_error if @search_condition.blank?
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def search_condition_params
-    params.require(:search_condition).permit(:name, :query_string, :view_number)
+    params.require(:search_condition).permit(:name, :query_string, :id)
   end
 end
