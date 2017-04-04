@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   # -----------------------------------------------------------------
   # GET /posts/new
   def new
+    block_double_post
     redirect_to posts_path, alert: t('views.message.validate.limit') unless PostService.validate(current_user.id)
     @post = PostService.new
     ready_form(@post)
@@ -89,6 +90,14 @@ class PostsController < ApplicationController
   # support methods
   # -----------------------------------------------------------------
   private
+
+  # -----------------------------------------------------------------
+  # validation
+  # -----------------------------------------------------------------
+  def block_double_post
+    post = Post.where(user_id: current_user.id).first # FIXME: call service -> repository
+    redirect_to edit_post_url(post) if post
+  end
 
   # -----------------------------------------------------------------
   # for filter
