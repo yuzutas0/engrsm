@@ -16,9 +16,7 @@ class User < ActiveRecord::Base
   # relation
   # -----------------------------------------------------------------
   has_many :search_conditions, dependent: :destroy
-  has_many :tags, dependent: :destroy
   has_many :posts, dependent: :destroy
-  has_many :backups, dependent: :destroy
 
   # -----------------------------------------------------------------
   # validation

@@ -16,7 +16,7 @@ gem 'mysql2'
 gem 'redis-rails'
 
 # SQL Performance
-gem 'activerecord-import', '~> 0.4.0'
+gem 'activerecord-import', '~> 0.10.0'
 
 # AP
 gem 'devise'
