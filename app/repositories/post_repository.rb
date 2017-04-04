@@ -44,9 +44,9 @@ class PostRepository
 
   # with options
   def self.detail_with_options(id, user_id)
-    Post.where('id = ? AND user_id = ?', id, user_id)
-        .includes(:tags)
-        .includes(:comments)
+    Post.where(id: id, user_id: user_id)
+        .includes(:tags, :comments)
+        .merge(Comment.order('comments.created_at DESC'))
         .first
   end
 end

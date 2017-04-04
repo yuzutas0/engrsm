@@ -4,7 +4,7 @@
       <div class="module__panel__inner">
 
         <div v-cloak>
-          <%= form_for(comment, url: update_comment_path) do |f| %>
+          <%= form_for(comment) do |f| %>
               <%= render 'comments/form', f: f, index: index, post: post %>
           <% end %>
         </div>
@@ -18,7 +18,7 @@
         <a v-on:click="showModal" class="layout__comments__index__item__edit"><%= t('.edit') %></a>
 
         <%= link_to t('.delete.title'),
-                    comments_path(id: comment.id),
+                    comment_path(id: comment.id),
                     method: :delete,
                     data: { confirm: t('.delete.confirm') },
                     title: t('.delete.title'),

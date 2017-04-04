@@ -37,10 +37,10 @@ Rails.application.routes.draw do
     delete '/posts/:id',      to: 'posts#destroy'
 
     # comment
-    post   '/comments', to: 'comments#create', as: 'create_comment'
-    patch  '/comments', to: 'comments#update', as: 'update_comment'
-    put    '/comments', to: 'comments#update'
-    delete '/comments', to: 'comments#destroy'
+    post   '/comments',     to: 'comments#create', as: 'create_comment'
+    patch  '/comments/:id', to: 'comments#update', as: 'update_comment'
+    put    '/comments/:id', to: 'comments#update'
+    delete '/comments/:id', to: 'comments#destroy', as: 'comment'
 
     # tag
     get    '/tags',     to: 'tags#index',  as: 'tags'
