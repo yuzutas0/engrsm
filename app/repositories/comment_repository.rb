@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 # comment_repository
 class CommentRepository
-  def self.detail(id, _user_id)
-    Comment.where('id = ?', id).first # FIXME: validate user_id
+  def self.detail(id, user_id)
+    Comment.where('id = ? AND user_id = ?', id, user_id).first
   end
 
   # get hash about post_id and how many comments is posted to the post

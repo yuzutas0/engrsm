@@ -7,12 +7,10 @@ class CommentService
 
   def self.create(params, post_id, user_id)
     Comment.transaction do
-      post = PostRepository.detail(post_id, user_id)
-      puts '*****'
-      puts post.inspect
-      comment = CommentFactory.instance(params, post)
+      post = PostRepository.detail(post_id)
+      comment = CommentFactory.instance(params, post, user_id)
       success = comment.save
-      return post, comment, success
+      return comment, success
     end
   end
 

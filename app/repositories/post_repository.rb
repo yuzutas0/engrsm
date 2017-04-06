@@ -37,8 +37,12 @@ class PostRepository
   # Read - detail
   # -----------------------------------------------------------------
 
+  def self.detail(id)
+    Post.where('id = ?', id).first
+  end
+
   # without options
-  def self.detail(id, user_id)
+  def self.detail_own(id, user_id)
     Post.where('id = ? AND user_id = ?', id, user_id).first
   end
 
@@ -46,7 +50,7 @@ class PostRepository
   def self.detail_with_options(id)
     Post.where(id: id)
         .includes(:tags, :comments)
-        .merge(Comment.order('comments.created_at DESC'))
+        .merge(Comment.order('comments.created_at DESC').includes(:user))
         .first
   end
 end

@@ -13,13 +13,13 @@ class CommentsController < ApplicationController
   # -----------------------------------------------------------------
   # POST /comments
   def create
-    @post, @comment, success = CommentService.create(comment_params, params[:post_id], current_user.id)
+    @comment, success = CommentService.create(comment_params, params[:post_id], current_user.id)
     if success
       flash[:notice] = t('views.message.create.success')
     else
       flash[:alert] = CommentDecorator.flash(@comment, flash)
     end
-    redirect_to "/posts/#{@post.id}?comments=created"
+    redirect_to "/posts/#{params[:post_id]}?comments=created"
   end
 
   # -----------------------------------------------------------------

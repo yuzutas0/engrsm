@@ -104,7 +104,7 @@ class PostsController < ApplicationController
   # -----------------------------------------------------------------
   # Use callbacks to share common setup or constraints between actions.
   def set_own_post
-    @post = PostService.detail(params[:id], current_user.id)
+    @post = PostService.detail_own(params[:id], current_user.id)
     routing_error if @post.blank?
   end
 

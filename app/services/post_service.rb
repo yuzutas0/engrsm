@@ -47,8 +47,8 @@ class PostService
   # -----------------------------------------------------------------
   # Read - detail
   # -----------------------------------------------------------------
-  def self.detail(id, user_id)
-    PostRepository.detail(id, user_id)
+  def self.detail_own(id, user_id)
+    PostRepository.detail_own(id, user_id)
   end
 
   def self.detail_with_options(id)
