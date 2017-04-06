@@ -24,7 +24,7 @@ class PostRepository
   def self.all(user_id)
     Post.where(user_id: user_id)
         .includes(:comments, :tags)
-        .merge(Comment.order('comments.created_at DESC'))
+        .merge(Comment.order('comments.created_at DESC').includes(:user))
         .merge(Tag.order('tags.id DESC'))
   end
 

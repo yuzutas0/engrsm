@@ -75,6 +75,8 @@ class BackupService
       comments.each do |comment|
         array << [
           '[id] ' + comment.id.to_s,
+          '[user id] ' + comment.user.id.to_s,
+          '[user name] ' + comment.user.name,
           '[created at] ' + local_time(comment.created_at, user),
           '[updated at] ' + local_time(comment.updated_at, user),
           CONTENT_SEPARATOR, comment.content, CONTENT_SEPARATOR
