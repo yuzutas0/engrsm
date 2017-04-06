@@ -3,7 +3,10 @@
   <div class="layout__post__show__information__label">
     <p class="layout__post__show__information__label__heading">Tag</p>
     <div>
-      <%= link_to t('views.path.name.post.edit'), edit_post_path(post) if post.tags.blank? %>
+      <% if post.tags.blank? %>
+        <p><%= t('views.message.blank.tag') %></p>
+        <p><%= link_to t('views.path.name.post.edit'), edit_post_path(post) if post.user_id == user_id %></p>
+      <% end %>
       <% post.tags.each do |label| %>
         <%= link_to "#{label.name}", posts_path('tags':{'id':[label.id]}), class: 'module__label' %>
       <% end %>
