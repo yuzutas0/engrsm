@@ -22,15 +22,17 @@
     </div>
   </div>
 
-  <hr>
-  <%= link_to t('.delete.title'), post,
-              method: :delete,
-              data: {
-                  confirm: t('.delete.confirm'),
-                  verify: post.title,
-                  'verify-text': t('.delete.verify')
-              },
-              title: t('.delete.title'),
-              class: 'text-danger'
-  %>
+  <% if post.user_id == user_id %>
+    <hr>
+    <%= link_to t('.delete.title'), post,
+                method: :delete,
+                data: {
+                    confirm: t('.delete.confirm'),
+                    verify: post.title,
+                    'verify-text': t('.delete.verify')
+                },
+                title: t('.delete.title'),
+                class: 'text-danger'
+    %>
+  <% end %>
 </div>

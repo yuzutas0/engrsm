@@ -8,7 +8,7 @@
     <%= link_to edit_post_path(@post),
                 class: 'layout__posts__show__header__right module__button module__button--small' do %>
       <%= fa_icon 'pencil' %>
-    <% end %>
+    <% end if @post.user_id == @user_id %>
     <div class="layout__post__show__header__end"></div>
   </div>
   <hr>
@@ -36,7 +36,7 @@
 
   <div class="tab-content">
     <%= render 'posts/_detail/content', tab_class: @tab_class, post: @post %>
-    <%= render 'posts/_detail/information', tab_class: @tab_class, post: @post %>
+    <%= render 'posts/_detail/information', tab_class: @tab_class, post: @post, user_id: @user_id %>
     <%= render 'posts/_detail/comments', tab_class: @tab_class, new_comment: @new_comment, comments: @comments, post: @post %>
   </div>
 </div>

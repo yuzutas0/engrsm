@@ -54,6 +54,7 @@ class PostsController < ApplicationController
   def show
     @new_comment = Comment.new
     @tab_class = PostDecorator.tab(params)
+    @user_id = current_user.id
   end
 
   # -----------------------------------------------------------------
