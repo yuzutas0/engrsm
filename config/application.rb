@@ -8,7 +8,7 @@ require 'activerecord-import/base'
 # override
 class ActiveRecord::Base
   class << self
-    alias_method :bulk_import, :import
+    alias bulk_import import
     remove_method :import
   end
 end
