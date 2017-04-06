@@ -48,7 +48,6 @@ class PostsController < ApplicationController
     @posts, @comments_attached = PostService.list(@queries)
     @tags, @tags_attached = TagService.list
     @default_sort_master = SearchForm.sort_master
-    @compare_master = SearchForm.compare_master
   end
 
   # GET /posts/1

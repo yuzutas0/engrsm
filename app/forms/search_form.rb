@@ -41,19 +41,6 @@ class SearchForm
     ]
   end
 
-  # ge - '>='
-  # eq - '=='
-  # le - '<='
-  def self.compare_master
-    [{ ge: '>=' }, { eq: '=' }, { le: '<=' }]
-  end
-
-  def self.compare_to_query(compare)
-    hash = {}
-    compare_master.each { |item| hash[item.keys.first] = item.values.first }
-    hash[compare.to_sym]
-  end
-
   # -----------------------------------------------------------------
   # Support - validator, converter
   # -----------------------------------------------------------------
