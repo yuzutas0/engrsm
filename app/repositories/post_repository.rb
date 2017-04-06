@@ -41,6 +41,10 @@ class PostRepository
     Post.where('id = ?', id).first
   end
 
+  def self.detail_by_user(user_id)
+    Post.where('user_id = ?', user_id).first
+  end
+
   # without options
   def self.detail_own(id, user_id)
     Post.where('id = ? AND user_id = ?', id, user_id).first

@@ -95,7 +95,7 @@ class PostsController < ApplicationController
   # validation
   # -----------------------------------------------------------------
   def block_double_post
-    post = Post.where(user_id: current_user.id).first # FIXME: call service -> repository
+    post = PostService.detail_by_user(current_user.id).first
     redirect_to edit_post_url(post) if post
   end
 
