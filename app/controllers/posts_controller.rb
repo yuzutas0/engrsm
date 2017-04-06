@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   def new
     block_double_post
     redirect_to posts_path, alert: t('views.message.validate.limit') unless PostService.validate(current_user.id)
-    @post = PostService.new
+    @post = PostService.new(current_user.name)
     ready_form(@post)
   end
 

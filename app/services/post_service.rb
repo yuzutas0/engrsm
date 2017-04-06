@@ -16,8 +16,9 @@ class PostService
   end
 
   # render page for create
-  def self.new
+  def self.new(user_name)
     post = Post.new
+    post.title = 'About: ' + user_name
     post.tags = []
     post
   end
