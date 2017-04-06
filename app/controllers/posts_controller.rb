@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   # -----------------------------------------------------------------
   # filter
   # -----------------------------------------------------------------
-  before_action :set_post, only: [:edit, :update, :destroy]
-  before_action :set_post_with_options, only: [:show]
+  before_action :set_own_post, only: [:edit, :update, :destroy]
+  before_action :set_other_post, only: [:show]
 
   # -----------------------------------------------------------------
   # endpoint - create
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   def index
     @queries = SearchForm.new(params, request.fullpath)
     @is_searched, @search_conditions = SearchConditionService.request(current_user, @queries)
-    @posts, @comments_attached = PostService.list(current_user.id, @queries)
+    @posts, @comments_attached = PostService.list(@queries)
     @tags, @tags_attached = TagService.list
     @default_sort_master = SearchForm.sort_master
     @compare_master = SearchForm.compare_master
@@ -103,13 +103,13 @@ class PostsController < ApplicationController
   # for filter
   # -----------------------------------------------------------------
   # Use callbacks to share common setup or constraints between actions.
-  def set_post
+  def set_own_post
     @post = PostService.detail(params[:id], current_user.id)
     routing_error if @post.blank?
   end
 
-  def set_post_with_options
-    @post = PostService.detail_with_options(params[:id], current_user.id)
+  def set_other_post
+    @post = PostService.detail_with_options(params[:id])
     routing_error if @post.blank?
   end
 

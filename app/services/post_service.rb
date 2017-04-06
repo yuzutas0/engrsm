@@ -37,8 +37,8 @@ class PostService
   # -----------------------------------------------------------------
 
   # return post list
-  def self.list(user_id, queries)
-    posts = search(user_id, queries)
+  def self.list(queries)
+    posts = search(queries)
     comments_attached = comments_attached(posts)
     [posts, comments_attached]
   end
@@ -50,8 +50,8 @@ class PostService
     PostRepository.detail(id, user_id)
   end
 
-  def self.detail_with_options(id, user_id)
-    PostRepository.detail_with_options(id, user_id)
+  def self.detail_with_options(id)
+    PostRepository.detail_with_options(id)
   end
 
   # -----------------------------------------------------------------
@@ -84,25 +84,24 @@ class PostService
     # -----------------------------------------------------------------
 
     # get list with keyword
-    def search(user_id, queries)
-      return PostRepository.list(search_args_without_keyword(user_id, queries)) if queries.keyword.blank?
-      PostRepository.search_by_es(search_args_with_keyword(user_id, queries))
+    def search(queries)
+      return PostRepository.list(search_args_without_keyword(queries)) if queries.keyword.blank?
+      PostRepository.search_by_es(search_args_with_keyword(queries))
     rescue => e
       Rails.logger.warn "failure to request Elasticsearch: #{e.message}"
-      PostRepository.search_by_db(search_args_with_keyword(user_id, queries))
+      PostRepository.search_by_db(search_args_with_keyword(queries))
     end
 
-    def search_args_without_keyword(user_id, queries)
+    def search_args_without_keyword(queries)
       {
-        user_id: user_id,
         tags: queries.tags,
         sort: queries.sort,
         page: queries.page
       }
     end
 
-    def search_args_with_keyword(user_id, queries)
-      hash = search_args_without_keyword(user_id, queries)
+    def search_args_with_keyword(queries)
+      hash = search_args_without_keyword(queries)
       hash.merge(keywords: queries.keyword.split(/[[:blank:]]+/).reject(&:blank?).uniq)
     end
 
