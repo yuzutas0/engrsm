@@ -15,8 +15,6 @@
 
         <hr class="layout__comments__index__item__divide"/>
 
-        <p><%= comment.user.name %> が投稿</p>
-
         <a v-on:click="showModal" class="layout__comments__index__item__edit"><%= t('.edit') %></a>
 
         <%= link_to t('.delete.title'),
@@ -28,6 +26,7 @@
         %>
 
         <div class="layout__comments__index__item__information">
+          <%= t('views.user.by', user_name: comment.user.name) %>,
           <%= t('views.time.create', time: local_time(comment.created_at)) %>
           <% unless comment.created_at == comment.updated_at %>
               | <%= t('views.time.update', time: local_time(comment.updated_at)) %>

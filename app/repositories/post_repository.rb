@@ -53,7 +53,7 @@ class PostRepository
   # with options
   def self.detail_with_options(id)
     Post.where(id: id)
-        .includes(:tags, :comments)
+        .includes(:tags, :comments, :user)
         .merge(Comment.order('comments.created_at DESC').includes(:user))
         .first
   end

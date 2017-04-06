@@ -17,7 +17,10 @@
     <p class="layout__post__show__information__time__heading">History</p>
     <div class="layout__post__show__information__time__content">
       <ul>
-        <li><%= t('views.time.create', time: local_time(post.created_at)) %></li>
+        <li>
+          <%= t('views.user.by', user_name: post.user.name) %>,
+          <%= t('views.time.create', time: local_time(post.created_at)) %>
+        </li>
         <% unless post.created_at == post.updated_at %>
             <li><%= t('views.time.update', time: local_time(post.updated_at)) %></li>
         <% end %>

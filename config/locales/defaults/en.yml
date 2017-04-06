@@ -7,3 +7,6 @@ en:
       option_-2: 'Older Create'
       option_-3: 'Newer Update'
       option_-4: 'Older Update'
+  views:
+    user:
+      by: 'by %{user_name}'
