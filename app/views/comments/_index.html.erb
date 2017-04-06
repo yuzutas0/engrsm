@@ -1,13 +1,20 @@
 <div class="layout__comments__index">
-  <% post.comments.each.with_index(1) do |comment, index| %>
+  <% index = 1 %>
+  <% post.comments.each do |comment| %>
+    <%
+      index_temp = index
+      index = -1 if comment.user.id != user_id
+    %>
     <div id="script__comment__<%= index %>" class="layout__comments__index__item module__panel">
       <div class="module__panel__inner">
 
-        <div v-cloak>
-          <%= form_for(comment) do |f| %>
-              <%= render 'comments/form', f: f, index: index, post: post %>
-          <% end %>
-        </div>
+        <% if comment.user.id == user_id %>
+          <div v-cloak>
+            <%= form_for(comment) do |f| %>
+                <%= render 'comments/form', f: f, index: index, post: post %>
+            <% end %>
+          </div>
+        <% end %>
 
         <div class="module__markdown">
           <%= markdown_to_html(comment.content) %>
@@ -15,15 +22,17 @@
 
         <hr class="layout__comments__index__item__divide"/>
 
-        <a v-on:click="showModal" class="layout__comments__index__item__edit"><%= t('.edit') %></a>
+        <% if comment.user.id == user_id %>
+          <a v-on:click="showModal" class="layout__comments__index__item__edit"><%= t('.edit') %></a>
 
-        <%= link_to t('.delete.title'),
-                    comment_path(id: comment.id),
-                    method: :delete,
-                    data: { confirm: t('.delete.confirm') },
-                    title: t('.delete.title'),
-                    class: 'layout__comments__index__item__delete'
-        %>
+          <%= link_to t('.delete.title'),
+                      comment_path(id: comment.id),
+                      method: :delete,
+                      data: { confirm: t('.delete.confirm') },
+                      title: t('.delete.title'),
+                      class: 'layout__comments__index__item__delete'
+          %>
+        <% end %>
 
         <div class="layout__comments__index__item__information">
           <%= t('views.user.by', user_name: comment.user.name) %>,
@@ -35,5 +44,6 @@
 
       </div>
     </div>
+    <% index = index_temp + 1 %>
   <% end %>
 </div>
