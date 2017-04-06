@@ -4,6 +4,7 @@
     <%
       index_temp = index
       index = -1 if comment.user.id != user_id
+      # FIXME: optimize html & js for modal view
     %>
     <div id="script__comment__<%= index %>" class="layout__comments__index__item module__panel">
       <div class="module__panel__inner">
@@ -34,8 +35,11 @@
           %>
         <% end %>
 
+        <div class="layout__comments__index__item__author">
+          <%= comment.user.name %>
+        </div>
+
         <div class="layout__comments__index__item__information">
-          <%= t('views.user.by', user_name: comment.user.name) %>,
           <%= t('views.time.create', time: local_time(comment.created_at)) %>
           <% unless comment.created_at == comment.updated_at %>
               | <%= t('views.time.update', time: local_time(comment.updated_at)) %>
@@ -44,6 +48,6 @@
 
       </div>
     </div>
-    <% index = index_temp + 1 %>
+    <% index = comment.user.id == user_id ? index + 1 : index_temp %>
   <% end %>
 </div>

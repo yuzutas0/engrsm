@@ -7,6 +7,3 @@ ja:
       option_-2: '作成が古い順'
       option_-3: '更新が新しい順'
       option_-4: '更新が古い順'
-  views:
-    user:
-      by: '%{user_name} によって'

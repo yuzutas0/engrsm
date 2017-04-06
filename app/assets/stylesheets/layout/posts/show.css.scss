@@ -31,11 +31,13 @@
   .layout__post__show__information {
     @extend .list-group;
 
+    .layout__post__show__information__author,
     .layout__post__show__information__label,
     .layout__post__show__information__time {
       @extend .list-group-item;
     }
 
+    .layout__post__show__information__author__heading,
     .layout__post__show__information__label__heading,
     .layout__post__show__information__time__heading {
       @extend .list-group-item-heading;
