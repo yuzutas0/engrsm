@@ -1,0 +1,9 @@
+# contacts view
+
+en:
+  contacts:
+    form:
+      placeholder: >
+        Send feedback or ask a question.
+        Sign-in or write down your email here if you want response.
+      submit: 'Send'

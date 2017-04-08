@@ -1,0 +1,9 @@
+# contacts view
+
+ja:
+  contacts:
+    form:
+      placeholder: >
+        ご意見・ご質問があればお気軽にお問い合わせください。
+        返信が必要な場合はログインするか、本文中にメールアドレスをご記入ください。
+      submit: '送信'

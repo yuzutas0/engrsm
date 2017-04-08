@@ -2,11 +2,11 @@
   <%= form_for(@contact, url: create_contact_path) do |f| %>
 
     <div class="module__form__field">
-      <%= f.text_area :content, class: 'module__form__field__text', placeholder: t('.content_placeholder') %>
+      <%= f.text_area :content, class: 'module__form__field__text', placeholder: t('.placeholder') %>
     </div>
 
     <div>
-      <%= f.submit class: 'module__button module__button--wide' %>
+      <%= f.submit t('.submit'), class: 'module__button module__button--wide' %>
     </div>
   <% end %>
 </div>
