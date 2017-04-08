@@ -13,13 +13,13 @@ en:
           title: 'Usage of this app'
           content1:
             title: '1. Write'
-            text_html: 'write down your thinking<br />with simple markdown editor.'
+            text_html: 'introduce yourself briefly<br />with simple markdown editor.'
           content2:
-            title: '2. List'
-            text_html: 'manage your wish list<br />with tagging and scoring.'
+            title: '2. Read'
+            text_html: 'find & read members resume<br />with tagging and keyword search.'
           content3:
-            title: '3. Sequel'
-            text_html: 'make your ideas deeper and<br />bigger with additional comments.'
+            title: '3. Comment'
+            text_html: 'have a fun conversation exchange<br />with comment for common topic.'
         inner2:
           title: 'Screenshot'
           image1: 'Editor'
