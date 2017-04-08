@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_205_080_455) do
+ActiveRecord::Schema.define(version: 20_170_408_113_257) do
   create_table 'comments', force: :cascade do |t|
     t.text     'content',    limit: 65_535
     t.integer  'post_id',    limit: 4
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
 
   add_index 'comments', ['post_id'], name: 'index_comments_on_post_id', using: :btree
   add_index 'comments', ['user_id'], name: 'index_comments_on_user_id', using: :btree
+
+  create_table 'contacts', force: :cascade do |t|
+    t.text     'content',    limit: 65_535
+    t.text     'request',    limit: 65_535
+    t.integer  'user_id',    limit: 4
+    t.datetime 'created_at',               null: false
+    t.datetime 'updated_at',               null: false
+  end
+
+  add_index 'contacts', ['user_id'], name: 'index_contacts_on_user_id', using: :btree
 
   create_table 'post_tag_relationships', force: :cascade do |t|
     t.integer 'post_id', limit: 4, null: false
@@ -87,6 +97,7 @@ ActiveRecord::Schema.define(version: 20_170_205_080_455) do
 
   add_foreign_key 'comments', 'posts'
   add_foreign_key 'comments', 'users'
+  add_foreign_key 'contacts', 'users'
   add_foreign_key 'post_tag_relationships', 'posts'
   add_foreign_key 'post_tag_relationships', 'tags'
   add_foreign_key 'posts', 'users'
