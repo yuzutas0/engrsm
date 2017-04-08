@@ -57,6 +57,9 @@ Rails.application.routes.draw do
     # backup
     post '/backup', to: 'backups#download', as: 'backup'
 
+    # contact
+    post '/contact', to: 'contacts#create', as: 'create_contact'
+
     # no route error
     get    '*all', to: 'application#routing_error'
     post   '*all', to: 'application#routing_error'

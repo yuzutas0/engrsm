@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   # -----------------------------------------------------------------
   # locale
   # -----------------------------------------------------------------
-  before_filter :set_locale
+  before_filter :set_locale, :set_contact
 
   # -----------------------------------------------------------------
   # CSRF
@@ -53,6 +53,13 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
     session[:locale] = I18n.locale
+  end
+
+  # -----------------------------------------------------------------
+  # for contact form
+  # -----------------------------------------------------------------
+  def set_contact
+    @contact = Contact.new
   end
 
   # -----------------------------------------------------------------
