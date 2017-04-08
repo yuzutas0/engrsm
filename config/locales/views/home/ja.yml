@@ -27,11 +27,12 @@ ja:
           image3: '一覧表示'
           image4: '検索フォーム'
           image5: 'コメント'
+          image6: 'バックアップ'
         inner3:
           title: '登録は無料です'
           text1: 'アカウント登録は1分で完了します。'
           text2_html: >
-            他人に投稿内容が見られないよう、<br class="visible-xs-block" />
+            他の人に内容を編集されないよう、<br class="visible-xs-block" />
             アカウント毎に投稿を管理します。<br class="hidden-sm" />
             アカウントを認証するために<br class="visible-xs-block" />
             メールアドレスが必要となります。

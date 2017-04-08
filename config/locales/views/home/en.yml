@@ -27,11 +27,12 @@ en:
           image3: 'List'
           image4: 'Search'
           image5: 'Comment'
+          image6: 'Backup'
         inner3:
           title: 'Signup for free'
           text1: 'Signup is going to be completed without time and money.'
           text2_html: >
-            We request your signup to provide the secret space for each accounts,
+            We request your signup to provide the edit permissions for each accounts,
             and email is required to authenticate the account.
           text3_html: >
             Don't be afraid of losing your posts

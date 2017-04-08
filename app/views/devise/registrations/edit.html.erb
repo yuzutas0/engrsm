@@ -47,9 +47,9 @@
     <div><%= f.submit t('.update'), class: 'module__button' %></div>
   <% end %>
 
-  <!--<hr>-->
-  <!--<%= link_to t('.backup'), backup_path, method: :post %>-->
-  <!--<p><%= t('.backup_info') %></p>-->
+  <hr>
+  <%= link_to t('.backup'), backup_path, method: :post %>
+  <p><%= t('.backup_info') %></p>
 
   <hr>
   <%= link_to t('.delete'), registration_path(resource_name), method: :delete, title: t('.delete_title'),

@@ -36,7 +36,7 @@ class BackupService
     def ready(user)
       filename = dir_name(user) + ZIP_FILE_NAME_SUFFIX
       temp_file = Tempfile.new(filename)
-      posts = PostRepository.all(user.id)
+      posts = PostRepository.list_by_user_with_options(user.id)
       [filename, temp_file, posts]
     end
 

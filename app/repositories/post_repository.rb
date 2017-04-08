@@ -20,17 +20,17 @@ class PostRepository
     Post.search_by_es(keywords, tags, sort, page)
   end
 
-  # get all records
-  def self.all(user_id)
+  # count records
+  def self.count(user_id)
+    Post.where(user_id: user_id).count
+  end
+
+  # get all records for user with options
+  def self.list_by_user_with_options(user_id)
     Post.where(user_id: user_id)
         .includes(:comments, :tags)
         .merge(Comment.order('comments.created_at DESC').includes(:user))
         .merge(Tag.order('tags.id DESC'))
-  end
-
-  # count records
-  def self.count(user_id)
-    Post.where(user_id: user_id).count
   end
 
   # -----------------------------------------------------------------
