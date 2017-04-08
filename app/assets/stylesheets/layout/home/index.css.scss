@@ -19,9 +19,7 @@
 
   .layout__home__impress {
     padding: $margin_size_xx_large 0;
-    background-image: image-url('top.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
+    background: image-url('top.jpg') no-repeat center center;
     background-size: cover;
 
     .layout__home__impress__inner {
