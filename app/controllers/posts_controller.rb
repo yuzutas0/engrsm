@@ -95,7 +95,7 @@ class PostsController < ApplicationController
   # validation
   # -----------------------------------------------------------------
   def block_double_post
-    post = PostService.detail_by_user(current_user.id).first
+    post = PostService.detail_by_user(current_user.id)
     redirect_to edit_post_url(post) if post
   end
 
