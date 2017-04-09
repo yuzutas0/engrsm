@@ -3,6 +3,9 @@
 en:
   contacts:
     form:
+      title_html: >
+        Your opinion carries<br class="visible-xs-block" />
+        Engineer Resume forward!
       placeholder: >
         Send feedback or ask a question.
         Sign-in or write down your email here if you want response.

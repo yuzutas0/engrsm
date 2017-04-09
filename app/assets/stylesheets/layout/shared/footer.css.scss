@@ -22,20 +22,31 @@
       }
     }
 
-    .layout__shared__footer__inner__links {
-      display: inline-block;
-      list-style: none;
-      padding: 0;
+    .layout__shared__footer__inner__contact {
       float: right;
+      width: 50%;
 
       @media (max-width: $screen-xs-max) {
         float: none;
-      }
-
-      .layout__shared__footer__inner__link {
-        display: inline-block;
-        margin-left: $margin_size_x_small;
+        width: 100%;
+        margin-top: $margin_size_large;
       }
     }
+
+    //.layout__shared__footer__inner__links {
+    //  display: inline-block;
+    //  list-style: none;
+    //  padding: 0;
+    //  float: right;
+    //
+    //  @media (max-width: $screen-xs-max) {
+    //    float: none;
+    //  }
+    //
+    //  .layout__shared__footer__inner__link {
+    //    display: inline-block;
+    //    margin-left: $margin_size_x_small;
+    //  }
+    //}
   }
 }

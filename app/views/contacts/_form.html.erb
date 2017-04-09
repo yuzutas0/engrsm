@@ -1,8 +1,10 @@
-<div class="module__form" style="width: 50%; ">
+<div class="module__form">
   <%= form_for(@contact, url: create_contact_path) do |f| %>
 
+    <p><%= t('.title_html') %></p>
+
     <div class="module__form__field">
-      <%= f.text_area :content, class: 'module__form__field__text', placeholder: t('.placeholder') %>
+      <%= f.text_area :content, class: 'module__form__field__text', rows: 4, placeholder: t('.placeholder') %>
     </div>
 
     <div>
