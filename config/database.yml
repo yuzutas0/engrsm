@@ -2,7 +2,7 @@ default: &default
   adapter: mysql2
   database: <%= ENV['DB_SCHEMA'] %>
   host: 127.0.0.1
-  port: 3306
+  port: <%= ENV['DB_PORT'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   encoding: utf8mb4
