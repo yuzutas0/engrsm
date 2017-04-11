@@ -22,13 +22,13 @@ class ContactsController < ApplicationController
     @contact.user_id = current_user.id if current_user
     @contact.request = request.headers.env.reject { |content|
       content.inspect.include?('rack') ||
-          content.inspect.include?('action_dispatch') ||
-          content.inspect.include?('warden') ||
-          content.inspect.include?('SERVER') ||
-          content.inspect.include?('COOKIE') ||
-          content.inspect.include?('cookie') ||
-          content.inspect.include?('session') ||
-          content.inspect.include?('instance')
+        content.inspect.include?('action_dispatch') ||
+        content.inspect.include?('warden') ||
+        content.inspect.include?('SERVER') ||
+        content.inspect.include?('COOKIE') ||
+        content.inspect.include?('cookie') ||
+        content.inspect.include?('session') ||
+        content.inspect.include?('instance')
     }.inspect
 
     if @contact.save
