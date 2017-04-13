@@ -6,7 +6,7 @@
 
 su
 
-yum -y install redis
+yum --enablerepo=epel install -y redis # for ec2
 
 systemctl start redis
 systemctl enable redis
