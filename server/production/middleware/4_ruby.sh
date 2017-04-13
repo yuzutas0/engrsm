@@ -15,7 +15,7 @@ ruby_version=$3
 exit # if you used 'su' command at previous operation
 
 ruby -v
-sudo yum remove ruby # if ruby has already installed
+sudo yum remove -y ruby # if ruby has already installed
 
 # ================================
 # install git
@@ -43,6 +43,8 @@ rbenv -v
 # ================================
 
 sudo yum install -y openssl-devel readline-devel zlib-devel
+sudo yum install -y gcc # for EC2
+
 
 rbenv install ${ruby_version}
 rbenv rehash
