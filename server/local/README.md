@@ -25,7 +25,7 @@ $ brew link --force libxslt
 # Gemfile
 $ bundle config build.nokogiri --use-system-libraries
 $ bundle config build.libv8 --with-system-v8
-$ bundle install --path vendor/bundle --without=production
+$ bundle install --path vendor/bundle --without=production --frozen
 
 # Bower
 $ bundle exec rake bower:install
