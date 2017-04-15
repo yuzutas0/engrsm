@@ -23,8 +23,8 @@ bundle -v
 # ================================
 
 su
-yum install -y nodejs
-yum install -y npm
+yum --enablerepo=epel install -y nodejs # for EC2
+yum --enablerepo=epel install -y npm # for EC2
 npm install -g bower
 exit
 
