@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20_170_408_113_257) do
     t.datetime 'updated_at',               null: false
   end
 
-  add_index 'posts', ['user_id'], name: 'index_posts_on_user_id', using: :btree
+  add_index 'posts', ['user_id'], name: 'index_posts_on_user_id', unique: true, using: :btree
 
   create_table 'search_conditions', force: :cascade do |t|
     t.string   'name',         limit: 255

@@ -16,7 +16,7 @@ class Post < ActiveRecord::Base
   # -----------------------------------------------------------------
   validates :title, presence: true, length: { minimum: 1, maximum: 255 }
   validates :content, presence: true, length: { minimum: 1, maximum: 15_000 }
-  validates :user, presence: true
+  validates :user, presence: true, uniqueness: true
 
   # -----------------------------------------------------------------
   # elasticsearch

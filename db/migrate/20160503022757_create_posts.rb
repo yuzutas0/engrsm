@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :title, null: false
       t.text :content, null: false
-      t.references :user, null: false, index: true, foreign_key: true
+      t.references :user, null: false, index: { unique: true }, foreign_key: true
 
       t.timestamps null: false
     end

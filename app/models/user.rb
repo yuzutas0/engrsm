@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   # relation
   # -----------------------------------------------------------------
   has_many :search_conditions, dependent: :destroy
-  has_many :posts, dependent: :destroy
+  has_one :post, dependent: :destroy
   has_many :contact
 
   # -----------------------------------------------------------------
