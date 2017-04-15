@@ -91,10 +91,11 @@ class PostService
     # get list with keyword
     def search(queries)
       return PostRepository.list(search_args_without_keyword(queries)) if queries.keyword.blank?
-      PostRepository.search_by_es(search_args_with_keyword(queries))
+      r = PostRepository.search_by_es(search_args_with_keyword(queries)) if ENV['USE_ELASTICSEARCH'] == true.to_s
     rescue => e
       Rails.logger.warn "failure to request Elasticsearch: #{e.message}"
-      PostRepository.search_by_db(search_args_with_keyword(queries))
+    ensure
+      return r || PostRepository.search_by_db(search_args_with_keyword(queries))
     end
 
     def search_args_without_keyword(queries)

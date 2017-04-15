@@ -21,12 +21,12 @@ class Post < ActiveRecord::Base
   # -----------------------------------------------------------------
   # elasticsearch
   # -----------------------------------------------------------------
-  # include
-  include PostSearchable
   include PostFinder
-  # connect
-  index_name PostSearchable::INDEX_NAME
-  __elasticsearch__.client = PostSearchable::CLIENT
+  if ENV['USE_ELASTICSEARCH'] == true.to_s
+    include PostSearchable
+    index_name PostSearchable::INDEX_NAME
+    __elasticsearch__.client = PostSearchable::CLIENT
+  end
 
   # -----------------------------------------------------------------
   # pagination
