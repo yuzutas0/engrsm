@@ -7,6 +7,10 @@ class PostDecorator < BaseDecorator
 
   # add flash message about error reasons
   def self.flash(post, flash)
+    if post.errors.messages[:user]
+      post.errors.add(:post, post.errors.messages[:user][0])
+      post.errors.delete(:user)
+    end
     flash_for_render(post, flash)
   end
 

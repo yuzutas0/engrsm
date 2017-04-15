@@ -26,10 +26,6 @@ class PostsController < ApplicationController
     if success
       redirect_to @post, notice: t('views.message.create.success')
     else
-      if @post.errors.messages[:user]
-        @post.errors.add(:post, @post.errors.messages[:user][0])
-        @post.errors.delete(:user)
-      end
       flash.now[:alert] = PostDecorator.flash(@post, flash)
       ready_form(@post, tags_params_string)
       render :new
