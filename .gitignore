@@ -186,6 +186,5 @@ public/assets/*
 !public/assets/.keep
 !vendor/assets/bower.json
 !vendor/assets/.bowerrc
-server/staging/vagrant/Vagrantfile
-server/staging/vagrant/.vagrant/
+server/virtualbox/.vagrant/
 work.md
