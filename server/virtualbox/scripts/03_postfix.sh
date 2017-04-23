@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo yum -y install postfix
+yum -y install postfix
+
+echo ${DOMAIN_NAME}
 
 postconf -e "myhostname = mail.${DOMAIN_NAME}"
 postconf -e "mydomain = ${DOMAIN_NAME}"
@@ -8,8 +10,8 @@ postconf -e 'myorigin = $myhostname'
 postconf -e 'inet_protocols = ipv4'
 postconf -e 'smtpd_banner = $myhostname ESMTP unknown'
 
-systemctl restart postfix
-systemctl enable postfix
+sudo systemctl restart postfix
+sudo systemctl enable postfix
 
 echo "send test mail to ${ADMIN_EMIAL}"
 date | sendmail ${ADMIN_EMIAL}
