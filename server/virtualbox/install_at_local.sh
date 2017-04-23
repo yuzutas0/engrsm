@@ -17,5 +17,5 @@ ssh vagrant@127.0.0.1 -p 2222 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x' < 
 # ================================
 # move to remote server
 # ================================
-echo "TODO: execute command `$ cd ./sync && bash -x ./install_at_remote.sh`"
+echo "TODO: execute command `$ cd ./sync && bash -x ./install_at_remote.sh EMAIL={your email address}`"
 vagrant ssh
