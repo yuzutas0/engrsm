@@ -4,7 +4,6 @@
 
 sudo DOMAIN_NAME=staging.engrsm.com ADMIN_EMAIL=${EMAIL} bash -x ./scripts/03_postfix.sh
 
-# TODO: postfix
 # TODO: mariadb or mysql
 # TODO: redis
 # TODO: elasticsearch
