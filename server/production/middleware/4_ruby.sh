@@ -45,7 +45,6 @@ rbenv -v
 sudo yum install -y openssl-devel readline-devel zlib-devel
 sudo yum install -y gcc # for EC2
 
-
 rbenv install ${ruby_version}
 rbenv rehash
 rbenv global ${ruby_version}

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# ================================
+# install & settings
+# ================================
+
 yum -y install mariadb mariadb-server
 
 cat << _EOF > /etc/my.cnf.d/custom.cnf
@@ -13,13 +17,24 @@ innodb-large-prefix=true
 default-character-set=utf8mb4
 _EOF
 
+# ================================
+# start
+# ================================
+
 systemctl start mariadb
 systemctl enable mariadb
+
+# ================================
+# create user
+# ================================
 
 echo "*** answer is 'Y'"
 echo "*** root password is ${ROOT_PASSWORD}"
 echo "***"
 mysql_secure_installation # => command
+
 mysql -u root -p${ROOT_PASSWORD} -e "grant all privileges on *.* to ${USER}@localhost identified by '${PASSWORD}'"
 
+# ================================
 # TODO: create scheme by rails command
+# ================================
