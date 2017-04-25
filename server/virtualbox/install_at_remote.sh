@@ -11,9 +11,9 @@ LINUX_USER=vagrant
 #sudo bash -x ./scripts/05_redis.sh
 #sudo APP=${APP_NAME} HOST=${HOST_NAME} bash -x ./scripts/06_elasticsearch.sh
 #VERSION=${RUBY_VERSION} bash -x ./scripts/07_ruby.sh
-APP=${APP_NAME} USER=${LINUX_USER} bash -x ./scripts/08_ready-for-app.sh
+#APP=${APP_NAME} USER=${LINUX_USER} bash -x ./scripts/08_ready-for-app.sh
+sudo APP=${APP_NAME} HOST=${HOST_NAME} bash -x ./scripts/09_nginx.sh
 
-# TODO: nginx
 # TODO: start-app
 # TODO: let's encrypt
 # TODO: logrotate
