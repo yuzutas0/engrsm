@@ -21,7 +21,16 @@ ssh vagrant@127.0.0.1 -p 2200 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x' < 
 # move to remote server
 # ================================
 db_root_password=$(cat /dev/urandom | LC_CTYPE=C tr -dc '[:alnum:]' | fold -w 16 | head -n 1)
+
 echo "*** DB_ROOT_PASSWORD=${db_root_password}"
 echo "***"
-echo '*** TODO: execute command `$ cd ./sync && EMAIL={your email address} DB_ROOT_PASSWORD={above value} DB_PASSWORD={random value} bash -x ./install_at_server.sh`'
+echo '*** TODO: execute command `$ cd ./sync && EMAIL={your email address} DB_ROOT_PASSWORD={above value} DB_PASSWORD={random value} bash -x ./install_at_server1.sh`'
+vagrant ssh engrsm
+
+echo "***"
+echo '*** TODO: execute command `$ cd ./sync && DB_PASSWORD={your database password} bash -x ./install_at_deploy.sh`'
+vagrant ssh deploy
+
+echo "***"
+echo '*** TODO: execute command `$ cd ./sync && bash -x ./install_at_server2.sh`'
 vagrant ssh engrsm
