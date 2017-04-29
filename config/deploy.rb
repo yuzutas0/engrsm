@@ -14,7 +14,7 @@ set :repo_url, 'https://github.com/yuzutas0/engrsm.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
-set :deploy_to, '/var/www/ensrsm'
+set :deploy_to, '/var/www/engrsm'
 set :deploy_via, :remote_cache
 
 # Default value for :format is :airbrussh.

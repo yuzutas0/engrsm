@@ -12,7 +12,7 @@ REDIS_NUMBER=1
 # install for Linux
 sudo bash -x ./scripts/02_packages.sh
 VERSION=${RUBY_VERSION} bash -x ./scripts/07_ruby.sh
-APP=${APP_NAME} USER=${LINUX_USER} bash -x ./scripts/08_ready-for-app.sh
+USER=${LINUX_USER} bash -x ./scripts/08_ready-for-app.sh
 
 sudo yum install -y libsass
 
@@ -48,4 +48,8 @@ sed -i -e "/RAILS_ENV=/c RAILS_ENV=production" .env
 sed -i -e "/SECRET_KEY_BASE=/c SECRET_KEY_BASE=${KEY_BASE}" .env
 
 # build & deploy
-bundle exec cap production deploy
+bundle exec cap production deploy # make directory -- raise error
+scp .env ${LINUX_USER}@${STAGING_SERVER}:/var/www/${APP_NAME}/shared/
+bundle exec cap production deploy # install apps -- raise error
+# TODO: unicorn
+# TODO: jenkins

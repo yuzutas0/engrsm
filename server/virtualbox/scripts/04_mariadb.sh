@@ -34,7 +34,4 @@ echo "***"
 mysql_secure_installation # => command
 
 mysql -u root -p${ROOT_PASSWORD} -e "grant all privileges on *.* to ${USER}@localhost identified by '${PASSWORD}'"
-
-# ================================
-# TODO: create scheme by rails command
-# ================================
+mysql -u ${USER} -p${PASSWORD} -e "create database ${SCHEME};"
