@@ -11,7 +11,7 @@ sudo bash -x ./scripts/02_packages.sh
 VERSION=${RUBY_VERSION} bash -x ./scripts/07_ruby.sh
 APP=${APP_NAME} USER=${LINUX_USER} bash -x ./scripts/08_ready-for-app.sh
 
-# TODO: Libsass
+sudo yum install libsass
 
 # install for Rails
 cd /home/${LINUX_USER}
@@ -22,6 +22,9 @@ bundle exec rake emoji
 # settings for staging server
 KEY_BASE=$(bundle exec rake secret)
 cp .env_template .env
+
+sed -i -e "s/HOST_URL=/HOST_URL=${TODO!!!}/g" .env
+sed -i -e "s/LOCAL_USER=/LOCAL_USER=${LINUX_USER}/g" .env
 
 sed -i -e "s/DB_SCHEMA=/DB_SCHEMA=${APP_NAME}/g" .env
 sed -i -e "s/DB_USERNAME=/DB_USERNAME=${APP_NAME}/g" .env

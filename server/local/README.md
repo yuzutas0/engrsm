@@ -7,6 +7,7 @@
 ```
 # Sass
 $ brew install libsass
+# $ brew install sassc
 
 # Bower
 $ brew install node
