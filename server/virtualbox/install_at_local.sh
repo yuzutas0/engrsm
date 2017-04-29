@@ -13,9 +13,9 @@ ssh-keygen -R \[127.0.0.1\]:2200
 # ================================
 echo "*** password: vagrant"
 ssh vagrant@127.0.0.1 -p 2222 'find sync -name "*.sh" | xargs chmod +x'
-ssh vagrant@127.0.0.1 -p 2222 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x' < ./scripts/01_code.sh
+ssh vagrant@127.0.0.1 -p 2222 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x' < ./sync/scripts/01_code.sh
 ssh vagrant@127.0.0.1 -p 2200 'find sync -name "*.sh" | xargs chmod +x'
-ssh vagrant@127.0.0.1 -p 2200 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x' < ./scripts/01_code.sh
+ssh vagrant@127.0.0.1 -p 2200 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x' < ./sync/scripts/01_code.sh
 
 # ================================
 # move to remote server
@@ -36,3 +36,5 @@ echo "*** DB_ROOT_PASSWORD=${db_root_password}"
 echo "***"
 echo '*** TODO: execute command `$ cd ./sync && bash -x ./install_at_server2.sh`'
 vagrant ssh engrsm
+
+# TODO: execute command by ssh

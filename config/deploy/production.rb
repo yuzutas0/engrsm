@@ -65,6 +65,7 @@ server ENV['SERVER_IP'],
        port: ENV['SSH_PORT'],
        ssh_options: {
          keys: "~/.ssh/#{ENV['RSA_FILE_NAME']}",
+         password: ENV['SSH_PASSWORD'], # deprecated
          forward_agent: false,
-         auth_methods: %w(publickey)
+         auth_methods: %w(publickey password)
        }

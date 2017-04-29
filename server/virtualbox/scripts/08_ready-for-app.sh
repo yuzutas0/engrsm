@@ -22,7 +22,7 @@ bower -v
 # ready for app
 # ================================
 
-yum install -y mysql-devel
+sudo yum install -y mysql-devel
 
 sudo mkdir -p /var/www/${APP}
 sudo chown ${USER} /var/www/${APP}

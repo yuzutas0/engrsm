@@ -48,7 +48,7 @@ set :keep_releases, 5
 # capistrano/rbenv
 # set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_type, :user
-set :rbenv_ruby, '2.3.0'
+set :rbenv_ruby, '2.3.3'
 
 # Defaults to :db role
 # Rails migrations are strictly related to the framework.
