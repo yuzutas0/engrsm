@@ -1,9 +1,17 @@
 #!/bin/bash
 
+# ================================
+# environment variables
+# ================================
+
 APP_NAME=engrsm
 HOST_NAME=staging.${APP_NAME}.com
 RUBY_VERSION=2.3.3
 LINUX_USER=vagrant
+
+# ================================
+# execute scripts
+# ================================
 
 sudo bash -x ./scripts/02_packages.sh
 sudo DOMAIN_NAME=${HOST_NAME} ADMIN_EMAIL=${EMAIL} bash -x ./scripts/03_postfix.sh
