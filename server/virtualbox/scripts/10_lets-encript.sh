@@ -7,6 +7,9 @@
 mkdir /home/${USER}/ssl/
 
 echo "*** Enter for all questions"
+echo -n "*** Is it OK to continue? [yes/no]"
+read answer
+
 openssl req -new -x509 -sha256 -newkey rsa:2048 -days 365 -nodes -out /home/${USER}/ssl/fullchain.pem -keyout /home/${USER}/ssl/privkey.pem
 
 chmod 600 /home/${USER}/ssl/*

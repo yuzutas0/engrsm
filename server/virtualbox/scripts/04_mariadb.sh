@@ -30,8 +30,11 @@ systemctl enable mariadb
 
 echo "*** answer is 'Y'"
 echo "*** root password is ${ROOT_PASSWORD}"
-echo "***"
-mysql_secure_installation # => command
+echo -n "*** Is it OK to continue? [yes/no]"
+read answer
+
+mysql_secure_installation
+# => command
 
 mysql -u root -p${ROOT_PASSWORD} -e "grant all privileges on *.* to ${USER}@localhost identified by '${PASSWORD}'"
 mysql -u ${USER} -p${PASSWORD} -e "create database ${SCHEME};"
