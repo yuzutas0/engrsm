@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# execute after ./install_at_deploy.sh
+
 # ================================
 # environment variables
 # ================================

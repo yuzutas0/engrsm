@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# execute after ./install_at_server1.sh
+
 # ================================
 # environment variables
 # ================================
