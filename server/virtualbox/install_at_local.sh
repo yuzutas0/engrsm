@@ -25,31 +25,36 @@ ssh vagrant@127.0.0.1 -p 2200 'find sync -name "*.sh" | xargs chmod +x'
 ssh vagrant@127.0.0.1 -p 2200 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x' < ./sync/scripts/01_code.sh
 
 # ================================
-# move to remote server
+# setting custom variables
 # ================================
 
 db_root_password=$(cat /dev/urandom | LC_CTYPE=C tr -dc '[:alnum:]' | fold -w 16 | head -n 1)
-
 echo "*** DB_ROOT_PASSWORD=${db_root_password}"
-echo '*** TODO: execute command `$ cd ./sync && EMAIL={your email address} DB_ROOT_PASSWORD={above value} DB_PASSWORD={random value} bash -x ./install_at_server1.sh`'
 echo -n "*** Is it OK to continue? [yes/no]"
 read answer
 
-vagrant ssh engrsm
-
-echo "*** DB_ROOT_PASSWORD=${db_root_password}"
-echo '*** TODO: execute command `$ cd ./sync && DB_PASSWORD={your database password} bash -x ./install_at_deploy.sh`'
+echo -n "*** Enter database password for custom user [password]"
+read db_password
+echo "*** Complete: DB_PASSWORD=${db_password}"
 echo -n "*** Is it OK to continue? [yes/no]"
 read answer
 
-vagrant ssh deploy
-
-echo "*** DB_ROOT_PASSWORD=${db_root_password}"
-echo "***"
-echo '*** TODO: execute command `$ cd ./sync && bash -x ./install_at_server2.sh`'
+echo -n "*** Enter admin mail information. [xxx@xxx.xxx]"
+read email
+echo "*** Complete: EMAIL=${email}"
 echo -n "*** Is it OK to continue? [yes/no]"
 read answer
 
-vagrant ssh engrsm
+# ================================
+# setting remote server
+# ================================
 
-# TODO: execute command by ssh
+vagrant ssh engrsm -c \
+"cd /home/vagrant/sync && EMAIL=${email} DB_ROOT_PASSWORD=${db_root_password} DB_PASSWORD=${db_password} \
+bash -x ./install_at_server1.sh"
+
+vagrant ssh deploy -c \
+"cd /home/vagrant/sync && DB_PASSWORD=${db_password} bash -x ./install_at_deploy.sh"
+
+vagrant ssh engrsm -c \
+"cd /home/vagrant/sync && bash -x ./install_at_server2.sh"
