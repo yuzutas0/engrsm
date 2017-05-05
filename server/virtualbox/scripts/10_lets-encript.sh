@@ -33,17 +33,17 @@ cat << _EOF > /etc/nginx/conf.d/${APP}.conf
   add_header X-Content-Type-Options nosniff;
 
   server {
-    listen 80;
-    listen [::]:80;
-    server_name ${HOST};
+    listen 80 default_server; # remove default_server at production
+    listen [::]:80 default_server; # remove default_server at production
+    server_name _; # replace _ with ${HOST} at production
     return 301 https://\$host\$request_uri;
   }
 
   server {
     set \$app ${APP};
-    listen 443 ssl;
-    listen [::]:443 ssl;
-    server_name ${HOST};
+    listen 443 ssl default_server; # remove default_server at production
+    listen [::]:443 ssl default_server; # remove default_server at production
+    server_name _; # replace _ with ${HOST} at production
 
     ssl on;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
@@ -81,46 +81,47 @@ cat << _EOF > /etc/nginx/conf.d/${APP}.conf
     }
   }
 
-  server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    server_name _;
-    error_page 400 401 403 404 500 501 502 503 504 = /custom_404.html;
-
-    location / {
-      deny all;
-    }
-
-    location /custom_404.html {
-      return 404 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html>\n<head>\n<title>404 Not Found</title>\n</head>\n<body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n</body>\n</html>";
-      internal;
-    }
-  }
-
-  server {
-    listen 443 ssl default_server;
-    listen [::]:443 ssl default_server;
-    server_name _;
-
-    ssl on;
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers ECDHE+RSAGCM:ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:!EXPORT:!DES:!3DES:!MD5:!DSS;
-
-    ssl_certificate /home/${USER}/ssl/fullchain.pem;
-    ssl_certificate_key /home/${USER}/ssl/privkey.pem;
-
-    error_page 400 401 403 404 500 501 502 503 504 = /custom_404.html;
-
-    location / {
-      deny all;
-    }
-
-    location /custom_404.html {
-      return 404 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html>\n<head>\n<title>404 Not Found</title>\n</head>\n<body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n</body>\n</html>";
-      internal;
-    }
-  }
+#  # *** TODO: enable this settings at production ***
+#  server {
+#    listen 80 default_server;
+#    listen [::]:80 default_server;
+#    server_name _;
+#    error_page 400 401 403 404 500 501 502 503 504 = /custom_404.html;
+#
+#    location / {
+#      deny all;
+#    }
+#
+#    location /custom_404.html {
+#      return 404 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html>\n<head>\n<title>404 Not Found</title>\n</head>\n<body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n</body>\n</html>";
+#      internal;
+#    }
+#  }
+#
+#  server {
+#    listen 443 ssl default_server;
+#    listen [::]:443 ssl default_server;
+#    server_name _;
+#
+#    ssl on;
+#    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+#    ssl_prefer_server_ciphers on;
+#    ssl_ciphers ECDHE+RSAGCM:ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:!EXPORT:!DES:!3DES:!MD5:!DSS;
+#
+#    ssl_certificate /home/${USER}/ssl/fullchain.pem;
+#    ssl_certificate_key /home/${USER}/ssl/privkey.pem;
+#
+#    error_page 400 401 403 404 500 501 502 503 504 = /custom_404.html;
+#
+#    location / {
+#      deny all;
+#    }
+#
+#    location /custom_404.html {
+#      return 404 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html>\n<head>\n<title>404 Not Found</title>\n</head>\n<body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n</body>\n</html>";
+#      internal;
+#    }
+#  }
 _EOF
 
 # ================================
