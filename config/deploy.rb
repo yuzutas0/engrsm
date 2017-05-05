@@ -109,8 +109,8 @@ namespace :assets do
 
       def rsync_command(path)
         ssh_key_path = ENV['RSA_FILE_NAME'] != 'XXX' ?
-            " --rsh='ssh -i /Users/#{ENV['LOCAL_USER']}/.ssh/#{ENV['RSA_FILE_NAME']}" : ''
-        'rsync' + ssh_key_path + " -p #{ENV['SSH_PORT']}'" +
+            " -i /Users/#{ENV['LOCAL_USER']}/.ssh/#{ENV['RSA_FILE_NAME']}" : ''
+        "rsync --rsh='ssh" + ssh_key_path + " -p #{ENV['SSH_PORT']}'" +
             " -av --delete ./#{path} #{ENV['OS_USER']}@#{ENV['SERVER_IP']}:#{shared_path}/#{path}"
       end
 
