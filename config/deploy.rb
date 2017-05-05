@@ -92,7 +92,7 @@ namespace :deploy do
   before :publishing, 'assets:precompile'
   after :publishing, :restart
   after :restart, :clear_cache
-  after :clear_cache, :create_elasticsearch_index
+  after :clear_cache, :create_elasticsearch_index if ENV['USE_ELASTICSEARCH'] == true.to_s
 end
 
 namespace :assets do
@@ -108,9 +108,10 @@ namespace :assets do
       execute 'find ./public/assets/ -name "*.css" | xargs rm -f'
 
       def rsync_command(path)
-        'rsync' +
-          + " --rsh='ssh -i /Users/#{ENV['LOCAL_USER']}/.ssh/#{ENV['RSA_FILE_NAME']} -p #{ENV['SSH_PORT']}'" +
-          + " -av --delete ./#{path} #{ENV['OS_USER']}@#{ENV['SERVER_IP']}:#{shared_path}/#{path}"
+        ssh_key_path = ENV['RSA_FILE_NAME'] != 'XXX' ?
+            " --rsh='ssh -i /Users/#{ENV['LOCAL_USER']}/.ssh/#{ENV['RSA_FILE_NAME']}" : ''
+        'rsync' + ssh_key_path + " -p #{ENV['SSH_PORT']}'" +
+            " -av --delete ./#{path} #{ENV['OS_USER']}@#{ENV['SERVER_IP']}:#{shared_path}/#{path}"
       end
 
       execute rsync_command 'vendor/assets/bower_components/'

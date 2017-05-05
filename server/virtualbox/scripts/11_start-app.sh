@@ -25,12 +25,7 @@ WantedBy=multi-user.target
 _EOF
 
 systemctl daemon-reload
-
-systemctl start ${APP}_unicorn
 systemctl enable ${APP}_unicorn
-systemctl status ${APP}_unicorn
-
-systemctl restart nginx
 
 # ================================
 # enable restart without password

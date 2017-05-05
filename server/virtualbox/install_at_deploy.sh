@@ -74,5 +74,4 @@ bundle exec cap production deploy # make directory -- raise error
 scp .env ${LINUX_USER}@${STAGING_SERVER}:/var/www/${APP_NAME}/shared/
 bundle exec cap production deploy # install apps -- raise error
 
-# TODO: unicorn
-# TODO: jenkins
+# TODO: install jenkins for easier deployment

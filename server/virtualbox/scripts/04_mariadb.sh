@@ -28,7 +28,7 @@ systemctl enable mariadb
 # create user
 # ================================
 
-echo "*** answer is 'Y'"
+echo "*** answer is 'Y' or root password"
 echo "*** root password is ${ROOT_PASSWORD}"
 echo -n "*** Is it OK to continue? [yes/no]"
 read answer

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# execute first
+# execute first at application root directory
+# $ cd server/virtualbox && bash -x ./install_at_local.sh
 
 # ================================
 # setup vagrant
 # ================================
 
-cd server/staging
 vagrant up
 ssh-keygen -R \[127.0.0.1\]:2222
 ssh-keygen -R \[127.0.0.1\]:2200
@@ -20,9 +20,9 @@ echo -n "*** Is it OK to continue? [yes/no]"
 read answer
 
 ssh vagrant@127.0.0.1 -p 2222 'find sync -name "*.sh" | xargs chmod +x'
-ssh vagrant@127.0.0.1 -p 2222 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x' < ./sync/scripts/01_code.sh
+ssh vagrant@127.0.0.1 -p 2222 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x ./sync/scripts/01_code.sh'
 ssh vagrant@127.0.0.1 -p 2200 'find sync -name "*.sh" | xargs chmod +x'
-ssh vagrant@127.0.0.1 -p 2200 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x' < ./sync/scripts/01_code.sh
+ssh vagrant@127.0.0.1 -p 2200 'USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x ./sync/scripts/01_code.sh'
 
 # ================================
 # setting custom variables
@@ -58,3 +58,6 @@ vagrant ssh deploy -c \
 
 vagrant ssh engrsm -c \
 "cd /home/vagrant/sync && bash -x ./install_at_server2.sh"
+
+vagrant ssh deploy -c "cd /home/vagrant/engrsm && bundle exec cap production deploy"
+vagrant ssh engrsm -c "sudo systemctl restart nginx"
