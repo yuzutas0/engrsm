@@ -71,6 +71,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV['HOST_URL'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: 'localhost' }
+  config.action_mailer.logger = Logger.new(config.paths['log'].first)
   config.action_mailer.logger.level = :debug
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
