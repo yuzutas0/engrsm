@@ -72,7 +72,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: 'localhost' }
   config.action_mailer.logger = Logger.new(config.paths['log'].first)
-  config.action_mailer.logger.level = :debug
+  config.action_mailer.logger.level = :info
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
