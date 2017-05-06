@@ -66,4 +66,4 @@ vagrant ssh engrsm -c \
 "cd ${work_dir} && bash -x ./install_at_server2.sh"
 
 vagrant ssh deploy -c "cd ${capistrano_dir} && bundle exec cap production deploy"
-vagrant ssh engrsm -c "sudo systemctl restart nginx"
+vagrant ssh engrsm -c "sudo systemctl restart nginx" # attention SELinux settings
