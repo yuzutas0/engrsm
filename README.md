@@ -22,4 +22,4 @@ fork from https://github.com/yuzutas0/my100tales
 ## Setup
 
 - [Local](server/local/)
-- [Production](server/production)
+- [Production](server/[deprecated]production)
