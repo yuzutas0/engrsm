@@ -3,7 +3,7 @@
 # execute first at application root directory
 # $ cd server/virtualbox && bash -x ./install_at_local.sh
 
-work_dir='/home/vagrant/sync'
+work_dir='/home/vagrant/engrsm/server/setup'
 capistrano_dir='/home/vagrant/engrsm'
 
 # ================================
@@ -22,13 +22,13 @@ echo "*** password: vagrant"
 echo -n "*** Is it OK to continue? [yes/no]"
 read answer
 
-ssh vagrant@127.0.0.1 -p 2222 "find ${work_dir} -name "*.sh" | xargs chmod +x"
-ssh vagrant@127.0.0.1 -p 2222 "sudo bash -x ${work_dir}/scripts/00_provision.sh"
-ssh vagrant@127.0.0.1 -p 2222 "USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x ${work_dir}/scripts/01_code.sh"
+vagrant ssh engrsm -c "sudo bash -x " < ./../setup/scripts/00_provision.sh
+vagrant ssh engrsm -c "USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x " < ./../setup/scripts/01_code.sh
+vagrant ssh engrsm -c "find ${work_dir} -name "*.sh" | xargs chmod +x"
 
-ssh vagrant@127.0.0.1 -p 2200 "find ${work_dir} -name "*.sh" | xargs chmod +x"
-ssh vagrant@127.0.0.1 -p 2200 "sudo bash -x ${work_dir}/scripts/00_provision.sh"
-ssh vagrant@127.0.0.1 -p 2200 "USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x ${work_dir}/scripts/01_code.sh"
+vagrant ssh deploy -c "sudo bash -x " < ./../setup/scripts/00_provision.sh
+vagrant ssh deploy -c "USER_NAME=vagrant HOST_NAME=127.0.0.1 bash -x " < ./../setup/scripts/01_code.sh
+vagrant ssh deploy -c "find ${work_dir} -name "*.sh" | xargs chmod +x"
 
 # ================================
 # setting custom variables
