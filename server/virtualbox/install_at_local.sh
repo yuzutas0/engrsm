@@ -7,6 +7,7 @@ user_name=vagrant
 app_name=engrsm
 work_dir=/home/${user_name}/${app_name}/server/setup
 capistrano_dir=/home/${user_name}/${app_name}
+ruby_version=2.3.3
 
 # ================================
 # setup vagrant
@@ -59,11 +60,13 @@ read answer
 
 vagrant ssh engrsm -c \
 "cd ${work_dir} && EMAIL=${email} DB_ROOT_PASSWORD=${db_root_password} DB_PASSWORD=${db_password} \
-LINUX_USER=${user_name} RUBY_VERSION=2.3.3 APP_NAME=${app_name} HOST_NAME=staging.${app_name}.com \
+LINUX_USER=${user_name} RUBY_VERSION=${ruby_version} APP_NAME=${app_name} HOST_NAME=staging.${app_name}.com \
 bash -x ./install_at_server1.sh"
 
 vagrant ssh deploy -c \
-"cd ${work_dir} && DB_PASSWORD=${db_password} bash -x ./install_at_deploy.sh"
+"cd ${work_dir} && DB_PASSWORD=${db_password} LINUX_USER=${user_name} LINUX_PASSWORD=${user_name} \
+RUBY_VERSION=${ruby_version} APP_NAME=${app_name} MAIL_HOST=staging.${app_name}.com \
+STAGING_SERVER=192.168.33.10 SSH_PORT=22 REDIS_NUMBER=1 bash -x ./install_at_deploy.sh"
 
 vagrant ssh engrsm -c \
 "cd ${work_dir} && LINUX_USER=${user_name} APP_NAME=${app_name} HOST_NAME=staging.${app_name}.com \

@@ -3,19 +3,6 @@
 # execute after ./install_at_server1.sh
 
 # ================================
-# environment variables
-# ================================
-
-APP_NAME=engrsm
-RUBY_VERSION=2.3.3
-LINUX_USER=vagrant
-LINUX_PASSWORD=${LINUX_USER}
-STAGING_SERVER=192.168.33.10
-MAIL_HOST=staging.engrsm.com
-SSH_PORT=22
-REDIS_NUMBER=1
-
-# ================================
 # install for Linux
 # ================================
 
